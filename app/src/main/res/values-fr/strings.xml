@@ -2,4 +2,5 @@
 <resources>
     <string name="app_name">RobotSanté</string>
     <string name="app_slogan">Un chatbot Pour Votre Santé</string>
+    <string name="loginError">Nom D\'utilisateur/Mot de Passe Incorrect</string>
 </resources>
