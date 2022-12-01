@@ -7,7 +7,7 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/chatBtn"
         android:layout_width="250dp"
         android:layout_height="100dp"
         android:icon="@drawable/robot_icon"
@@ -16,6 +16,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/histBtn"
+        android:layout_width="250dp"
+        android:layout_height="100dp"
+        android:icon="@drawable/robot_icon"
+        android:layout_marginTop="400dp"
+        android:text="History (temp)"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/chatBtn"/>
 
     <View
         android:layout_width="wrap_content"
