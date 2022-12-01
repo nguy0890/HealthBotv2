@@ -3,4 +3,57 @@
     <string name="app_name">RobotSanté</string>
     <string name="app_slogan">Un chatbot Pour Votre Santé</string>
     <string name="loginError">Nom D\'utilisateur/Mot de Passe Incorrect</string>
+
+    <!--LoginActivity-->
+    <string name="banner_title">SantéChat</string>
+    <string name="loginText">S\'identifier</string>
+    <string name="loginHint">Exemple@exemple.com</string>
+    <string name="passwordHint">Mot de Passe</string>
+    <string name="loginButtonText">Connexion</string>
+    <string name="forgotText">Nom d\'utilisateur/mot de passe oublié ?</string>
+    <string name="signInWithText">Se connecter avec:</string>
+
+    <!--MainActivity-->
+    <string name="aboutButton">À Propos de Nous</string>
+    <string name="historyButton">historyButton</string>
+    <string name="chatButton">Bouton de Discussion</string>
+    <string name="profileButton">Profil de l\'utilisateur</string>
+
+    <!--HistoryActivity-->
+    <string name="historyText">Historique du diagnostic</string>
+    <string name="clear_hist">Histoire claire?</string>
+    <string name="delete_history">Voulez-vous vraiment effacer l\'historique de vos diagnostics ?</string>
+
+    <!--Details Fragment-->
+    <string name="dh_frag_diag_txt">Diagnostic:</string>
+    <string name="dh_frag_default">n/a</string>
+    <string name="dh_frag_date_txt">Date:</string>
+    <string name="dh_frag_symptom_txt">Les symptômes:</string>
+    <string name="dh_frag_btn_txt">Supprimer le diagnostic</string>
+
+
+    <!--ChatActivity-->
+    <string name="SendButton">Envoyer</string>
+    <string name="defaultResponse">Vous êtes en danger imminent ! Appelez s\'il vous plaît (***) ***-****</string>
+
+    <!--    EditProfiles   -->
+    <string name="edit_info">Éditer</string>
+    <string name="exit">Sortir</string>
+    <string name="ok">Ok</string>
+    <!--    SharedPreferencesActivity   -->
+    <string name="name">Nom</string>
+    <string name="name_hint">Entrez votre nom</string>
+    <string name="email">Email</string>
+    <string name="email_hint">Entrer votre Email</string>
+    <string name="gender">Le genre</string>
+    <string name="gender_male">Mâle</string>
+    <string name="gender_female">Femelle</string>
+    <string name="gender_unknown">indéterminé</string>
+    <string name="save">Sauvegarder</string>
+    <string name="cancel">Annuler</string>
+    <string name="preference_name">DefaultEmail</string><!--do not change file name-->
+    <string name="key_name">name</string>
+    <string name="key_email">email</string>
+    <string name="key_gender">gender</string>
+    <string name="save_message">Enregistré</string>
 </resources>
