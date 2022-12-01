@@ -1,10 +1,17 @@
 <resources>
+    <string name="ok" translatable="false">OK</string>
+    <string name="cancel" translatable="false">Cancel</string>
+    <string name="Daniel" translatable="false">Daniel Nguyen</string>
+    <string name="Andrew" translatable="false">Andrew Best</string>
+    <string name="Arvind" translatable="false">Arvind Sahota</string>
+    <string name="Johnson" translatable="false">Johnson Huynh</string>
+    <string name="Alec" translatable="false">Alec Tarrant</string>
+
     <string name="app_name">HealthBot</string>
     <string name="app_slogan">A Chatbot for Your Health</string>
     <string name="loginError">Incorrect Username/Password</string>
-
-
-    <!-- BMI -->
+    
+     <!-- BMI -->
     <string name="BMIName">Body Mass Index (BMI) Calculator</string>
     <string name="BMIButtonName">BMI</string>
     <string name="BMIHeight">Height</string>
@@ -20,6 +27,55 @@
         <item>cm</item>
     </string-array>
 
+    <!--LoginActivity -->
+    <string name="banner_title">HealthChat</string>
+    <string name="loginText">Sign In</string>
+    <string name="loginHint">Example@example.com</string>
+    <string name="passwordHint">Password</string>
+    <string name="loginButtonText">Login</string>
+    <string name="forgotText">Forgot Username/Password?</string>
+    <string name="signInWithText">Sign in with:</string>
+
+    <!--MainActivity-->
+    <string name="aboutButton">About Us</string>
+    <string name="historyButton">Diagnosis History</string>
+    <string name="chatButton">Chat Button</string>
+    <string name="profileButton">User Profile</string>
+
+    <!--HistoryActivity-->
+    <string name="historyText">Diagnosis History</string>
+    <string name="clear_hist">Clear History?</string>
+    <string name="delete_history">Are you sure you want to clear your diagnosis history?</string>
+
+    <!--Details Fragment-->
+    <string name="dh_frag_diag_txt">Diagnosis:</string>
+    <string name="dh_frag_default">n/a</string>
+    <string name="dh_frag_date_txt">Date:</string>
+    <string name="dh_frag_symptom_txt">Symptoms:</string>
+    <string name="dh_frag_btn_txt">Delete Diagnosis</string>
 
 
+
+    <!--ChatActivity-->
+    <string name="SendButton">Send</string>
+    <string name="defaultResponse">You are in imminent danger! Please call (***) ***-****</string>
+
+    <!--    EditProfiles   -->
+    <string name="edit_info">Edit Info</string>
+    <string name="exit">Exit</string>
+    <!--    SharedPreferencesActivity   -->
+    <string name="name">Name</string>
+    <string name="name_hint">Enter your name</string>
+    <string name="email">Email</string>
+    <string name="email_hint">Enter your email</string>
+    <string name="gender">Gender</string>
+    <string name="gender_male">Male</string>
+    <string name="gender_female">Female</string>
+    <string name="gender_unknown">undetermined</string>
+    <string name="save">Save</string>
+    <string name="preference_name">DefaultEmail</string><!--do not change file name-->
+    <string name="key_name">name</string>
+    <string name="key_email">email</string>
+    <string name="key_gender">gender</string>
+    <string name="save_message">Saved</string>
 </resources>
