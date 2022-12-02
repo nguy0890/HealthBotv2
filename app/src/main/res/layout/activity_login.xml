@@ -10,8 +10,8 @@
         android:id="@+id/signInText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="login "
-        android:textColor="#2f5751"
+        android:text="@string/welcome"
+        android:textColor="#00bcd4"
         android:textSize="50dp"
         android:textStyle="bold"
         android:gravity="center"
@@ -70,25 +70,28 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
-        android:backgroundTint="#2f5751"
+        android:backgroundTint="#00bcd4"
         android:text="login button"
         android:textSize="20dp" />
 
     <TextView
+        android:id="@+id/forgotPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/forgotPassword"
         android:layout_below="@id/loginButton"
-        android:textColor="#2f5751"
         android:layout_centerHorizontal="true"
-        android:text="forgot"
-        android:layout_margin="10dp" />
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:text="@string/forgotText"
+        android:textColor="#2f5751" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/signInWith"
-        android:text="sign in"
+        android:text=""
         android:layout_centerHorizontal="true"
         android:layout_above="@id/icons"/>
 
@@ -103,11 +106,12 @@
         <ImageView
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_margin="5dp"/>
+            android:layout_margin="5dp" />
         <ImageView
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_margin="5dp"/>
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="5dp"
+            android:src="@drawable/robot_icon"/>
         <ImageView
             android:layout_width="48dp"
             android:layout_height="48dp"
