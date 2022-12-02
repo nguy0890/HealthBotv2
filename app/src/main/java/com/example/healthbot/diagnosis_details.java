@@ -20,6 +20,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -117,6 +119,7 @@ public class diagnosis_details extends Fragment {
                         dh_sp_edit.commit();
                         getActivity().recreate();
                         getActivity().onBackPressed();
+                        Toast.makeText(rootview.getContext(),rootview.getResources().getString(R.string.dh_frag_toast), Toast.LENGTH_SHORT).show();
                     }
                 });
                 builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
