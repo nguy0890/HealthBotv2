@@ -32,6 +32,10 @@ import androidx.navigation.ui.AppBarConfiguration;
 public class MainActivity extends AppCompatActivity {
     protected static final String ACTIVITY_NAME = "MainActivity"; //debugging message
 
+    BottomNavigationView bottomNavigationView;
+    Dialog warningDialog;
+    Button understoodButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +46,9 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         //Declare button
         final Button bmiButton = findViewById(R.id.bmiButton);
+
+        //Buttons for warning message
+        final ImageButton warningButton = findViewById(R.id.warningButton);
 
         //BMI button on click
         bmiButton.setOnClickListener(new View.OnClickListener() {
@@ -58,6 +65,16 @@ public class MainActivity extends AppCompatActivity {
         chatBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) { addHistory(); }});
+
+        //Warning button on click
+        warningDialog = new Dialog(this);
+        warningButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.i(ACTIVITY_NAME, "User clicked Warning Button");
+                openWarningDialog();
+            }
+        });
     }
 
     public boolean onCreateOptionsMenu(Menu m) {
@@ -101,5 +118,22 @@ public class MainActivity extends AppCompatActivity {
         dh_sp_edit.commit();
 
     }
+
+    private void openWarningDialog() {
+        warningDialog.setContentView(R.layout.warning_message);
+        warningDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        Button understoodButton = warningDialog.findViewById(R.id.understoodButton);
+        warningDialog.show();
+
+        //Warning button on click
+        understoodButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.i(ACTIVITY_NAME, "User clicked Understood Button");
+                warningDialog.dismiss();
+            }
+        });
+    }
+
 
 }

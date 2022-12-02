@@ -55,6 +55,16 @@
             app:layout_constraintTop_toTopOf="parent"
             android:layout_below="@id/chatBtn"/>
 
+        <ImageButton
+            android:id="@+id/warningButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@null"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_baseline_warning_24"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true" />
+
     </RelativeLayout>
 
 </RelativeLayout>
