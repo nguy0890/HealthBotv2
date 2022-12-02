@@ -22,6 +22,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -29,7 +31,8 @@ import java.util.Map;
 
 public class HistoryActivity extends AppCompatActivity {
     protected static final String ACTIVITY_NAME = "HistoryActivity";
-    protected ArrayList<String> diagnosis_history = new ArrayList<String>();
+    protected ArrayList<String> diagnosis_title = new ArrayList<String>();
+    protected ArrayList<String> diagnosis_info = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,25 +45,25 @@ public class HistoryActivity extends AppCompatActivity {
         ListView history_listView = findViewById(R.id.history_listView);
         Button clear_hist = findViewById(R.id.clear_hist_btn);
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-
         //set adapter
         history_listView.setAdapter(diagnosisAdapter);
 
         //initialize sharedpreferences
         SharedPreferences dh_sp = getSharedPreferences("history_sp", MODE_PRIVATE);
 
-        // array containing all shared preference keys
+        // map containing all shared preference keys
         Map<String, ?> keys = dh_sp.getAll();
 
         // if no keys (no saved data) then set text to "No Previous Diagnosis",
         // else, loop through keys
         if (keys.size() == 0) {
-            diagnosis_history.add("No Previous Diagnosis");
+            diagnosis_title.add("No Previous Diagnosis");
             diagnosisAdapter.notifyDataSetChanged(); //this restarts the process of getCount()/
         } else {
             for (Map.Entry<String, ?> entry : keys.entrySet()) {
-                diagnosis_history.add(entry.getKey() + ": \n" +
-                        entry.getValue().toString());
+
+                diagnosis_title.add(entry.getKey());
+                diagnosis_info.add(entry.getValue().toString());
                 diagnosisAdapter.notifyDataSetChanged(); //this restarts the process of getCount()/
             }
         }
@@ -97,9 +100,10 @@ public class HistoryActivity extends AppCompatActivity {
         history_listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Object o = history_listView.getItemAtPosition(i);
+                keys.entrySet();
+                Log.i("this", diagnosis_info.get(i));
                 Bundle bundle = new Bundle();
-                bundle.putString("Hello", "hi");
+                bundle.putString("diagnosis_info", diagnosis_info.get(i));
                 FragmentTransaction fragmentTransaction = getSupportFragmentManager()
                         .beginTransaction();
                 Fragment profileFragment = new diagnosis_details();//the fragment you want to show
@@ -122,12 +126,12 @@ public class HistoryActivity extends AppCompatActivity {
 
         public int getCount(){
             Log.i(ACTIVITY_NAME, "in onCount()");
-            return diagnosis_history.size();
+            return diagnosis_title.size();
         }
 
         public String getItem(int position) {
             Log.i(ACTIVITY_NAME, "in getItem()");
-            return diagnosis_history.get(position);
+            return diagnosis_title.get(position);
         }
 
         public View getView(int position, View convertView, ViewGroup parent){
