@@ -2,13 +2,17 @@ package com.example.healthbot;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
 import android.content.Intent;
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.content.SharedPreferences;
+import android.widget.ImageButton;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -17,15 +21,21 @@ import java.util.Date;
 public class MainActivity extends AppCompatActivity {
     protected static final String ACTIVITY_NAME = "MainActivity"; //debugging message
 
+    Dialog warningDialog;
+    Button understoodButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         //Declare button
         final Button bmiButton = findViewById(R.id.bmiButton);
 
-        //Toolbar button on click
+        //Buttons for warning message
+        final ImageButton warningButton = findViewById(R.id.warningButton);
+
+        //BMI button on click
         bmiButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -34,6 +44,17 @@ public class MainActivity extends AppCompatActivity {
                 startActivityForResult(intent, 10);
             }
         });
+
+        //Warning button on click
+        warningDialog = new Dialog(this);
+        warningButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.i(ACTIVITY_NAME, "User clicked Warning Button");
+                openWarningDialog();
+            }
+        });
+
         Button chatBtn = findViewById(R.id.chatBtn);
         Button histBtn = findViewById(R.id.histBtn);
 
@@ -63,6 +84,21 @@ public class MainActivity extends AppCompatActivity {
         dh_sp_edit.putString(currentTime.toString(), "Diagnosis Description");
         dh_sp_edit.commit();
 
+    }
+    private void openWarningDialog() {
+        warningDialog.setContentView(R.layout.warning_message);
+        warningDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        Button understoodButton = warningDialog.findViewById(R.id.understoodButton);
+        warningDialog.show();
+
+        //Warning button on click
+        understoodButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.i(ACTIVITY_NAME, "User clicked Understood Button");
+                warningDialog.dismiss();
+            }
+        });
     }
 
 }
