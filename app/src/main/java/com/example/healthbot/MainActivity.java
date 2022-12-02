@@ -10,6 +10,10 @@ import android.view.View;
 import android.widget.Button;
 import android.content.SharedPreferences;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+
 import java.util.Calendar;
 import java.util.Date;
 
@@ -58,9 +62,20 @@ public class MainActivity extends AppCompatActivity {
     protected void addHistory(){
         SharedPreferences dh_sp = getSharedPreferences("history_sp", MODE_PRIVATE);
         Date currentTime = Calendar.getInstance().getTime();
+        JSONObject diagnosis = new JSONObject();
+        String[] symptoms = {"runny nose", "headache"};
+
+        try {
+            diagnosis.put("diagnosis", "test");
+            diagnosis.put("symptoms", String.join(",", symptoms));
+            diagnosis.put("date", currentTime);
+        } catch (JSONException e){
+            Log.i("main", "tough");
+        }
+
         SharedPreferences.Editor dh_sp_edit = dh_sp.edit();
 
-        dh_sp_edit.putString(currentTime.toString(), "Diagnosis Description");
+        dh_sp_edit.putString(currentTime.toString(), diagnosis.toString());
         dh_sp_edit.commit();
 
     }
