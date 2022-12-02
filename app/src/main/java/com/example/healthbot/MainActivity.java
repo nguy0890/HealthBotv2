@@ -65,7 +65,10 @@ public class MainActivity extends AppCompatActivity {
         chatBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                addHistory();
+                //addHistory();
+                Log.i(ACTIVITY_NAME, "User clicked Chat Button");
+                Intent intent = new Intent(MainActivity.this, ChatActivity.class);
+                startActivityForResult(intent, 10);
             }
         });
 
