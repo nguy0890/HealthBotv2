@@ -73,20 +73,10 @@ public class MainActivity extends AppCompatActivity {
         });
 
         Button chatBtn = findViewById(R.id.chatBtn);
-        Button histBtn = findViewById(R.id.histBtn);
 
         chatBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) { addHistory(); }});
-
-        //temp
-        histBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, HistoryActivity.class);
-                startActivityForResult(intent, 10);
-            }
-        });
     }
 
     public boolean onCreateOptionsMenu(Menu m) {

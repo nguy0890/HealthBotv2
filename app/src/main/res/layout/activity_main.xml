@@ -45,26 +45,15 @@
             android:layout_centerHorizontal="true"/>
 
         <Button
-            android:id="@+id/histBtn"
-            android:layout_width="250dp"
-            android:layout_height="100dp"
-            android:icon="@drawable/robot_icon"
-            android:layout_marginTop="400dp"
-            android:text="History (temp)"
-            android:layout_centerHorizontal="true"
-            app:layout_constraintTop_toBottomOf="@id/chatBtn"/>
-
-
-
-        <Button
             android:id="@+id/bmiButton"
-            android:layout_width="50dp"
+            android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:text="@string/BMIButtonName"
             android:layout_centerHorizontal="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_below="@id/chatBtn"/>
 
         <ImageButton
             android:id="@+id/warningButton"
@@ -74,7 +63,8 @@
             android:scaleType="fitCenter"
             android:src="@drawable/ic_baseline_warning_24"
             android:layout_centerHorizontal="true"
-            android:layout_below="@id/bmiButton" />
+            android:layout_alignParentBottom="true" />
+
     </RelativeLayout>
 
 </RelativeLayout>
