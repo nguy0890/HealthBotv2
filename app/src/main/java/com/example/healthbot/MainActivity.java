@@ -27,6 +27,8 @@ import java.util.Calendar;
 import java.util.Date;
 
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.ui.AppBarConfiguration;
 
 
@@ -87,11 +89,23 @@ public class MainActivity extends AppCompatActivity {
         switch (id) {
             case R.id.menuHome:
                 Log.d("Toolbar", "You selected item Home");
+                Intent intent = new Intent(MainActivity.this, MainActivity.class);
+                startActivityForResult(intent, 10);
                 break;
             case R.id.menuHistory:
                 Log.d("Toolbar", "You selected item History");
-                Intent intent = new Intent(MainActivity.this, HistoryActivity.class);
-                startActivityForResult(intent, 10);
+                Intent intent_hist = new Intent(MainActivity.this, HistoryActivity.class);
+                startActivityForResult(intent_hist, 10);
+                break;
+            case R.id.menuHelp:
+                Log.d("Toolbar", "You selected item Help");
+                FragmentTransaction fragmentTransaction = getSupportFragmentManager()
+                        .beginTransaction();
+                Fragment profileFragment = new HelpScreenFragment();//the fragment you want to show
+                fragmentTransaction
+                        .replace(R.id.layoutToBeReplacedWithFragmentinMain, profileFragment);//R.id.content_frame is the layout you want to replace
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
                 break;
             case R.id.menuAboutUs:
                 Log.d("Toolbar", "You selected item AboutUs");

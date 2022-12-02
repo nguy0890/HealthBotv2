@@ -85,7 +85,9 @@
     <string name="warning">Caution</string>
     <string name="warningMsg">This application is not real medical advice. Please call 911 for immediate medical attention.</string>
     <string name="understood">Understood.</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
+    <!--Help Activity-->
+    <string name="help_name">Help Center</string>
 
 
 </resources>

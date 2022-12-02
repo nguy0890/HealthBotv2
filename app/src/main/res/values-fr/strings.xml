@@ -79,4 +79,7 @@
     <string name="warning">Attention</string>
     <string name="warningMsg">Cette application n\'est pas un véritable avis médical. Veuillez appeler le 911 pour des soins médicaux immédiats.</string>
     <string name="understood">Confirmer.</string>
+
+    <!--Help Activity-->
+    <string name="help_name">centre d\'aide</string>
 </resources>

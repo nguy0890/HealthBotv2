@@ -7,10 +7,10 @@
     tools:context=".diagnosis_details">
 
     <LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
 
         <include
             android:id="@+id/dh_top_panel"
@@ -64,7 +64,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:textSize="20sp"
-                android:hint="n/a"
+                android:hint="@string/dh_frag_default"
                 android:layout_below="@id/dh_frag_symptom_head"
                 android:layout_above="@id/dh_frag_delete_btn"/>
 
