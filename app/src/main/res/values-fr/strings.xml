@@ -64,6 +64,8 @@
     <string name="name_hint">Entrez votre nom</string>
     <string name="email">Email</string>
     <string name="email_hint">Entrer votre Email</string>
+    <string name="age">âge</string>
+    <string name="age_hint">Entrez votre âge</string>
     <string name="gender">Le genre</string>
     <string name="gender_male">Mâle</string>
     <string name="gender_female">Femelle</string>

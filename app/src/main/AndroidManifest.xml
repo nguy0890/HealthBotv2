@@ -18,6 +18,20 @@
             android:value=".MainActivity" />
 
         <activity
+            android:name=".MySQLiteProfile"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".EditProfiles"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".BMICalculator"
             android:exported="true"
             android:parentActivityName=".MainActivity">
