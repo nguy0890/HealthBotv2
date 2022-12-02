@@ -53,8 +53,7 @@
     <string name="dh_frag_date_txt">Date:</string>
     <string name="dh_frag_symptom_txt">Symptoms:</string>
     <string name="dh_frag_btn_txt">Delete Diagnosis</string>
-
-
+    <string name="delete_history_fragment">Are you sure you want to delete this diagnosis?</string>
 
     <!--ChatActivity-->
     <string name="SendButton">Send</string>
