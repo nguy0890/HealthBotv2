@@ -31,6 +31,7 @@ import java.util.Map;
 
 public class HistoryActivity extends AppCompatActivity {
     protected static final String ACTIVITY_NAME = "HistoryActivity";
+    protected static final String sp_name = "history_sp"; // temporary
     protected ArrayList<String> diagnosis_title = new ArrayList<String>();
     protected ArrayList<String> diagnosis_info = new ArrayList<String>();
 
@@ -49,7 +50,7 @@ public class HistoryActivity extends AppCompatActivity {
         history_listView.setAdapter(diagnosisAdapter);
 
         //initialize sharedpreferences
-        SharedPreferences dh_sp = getSharedPreferences("history_sp", MODE_PRIVATE);
+        SharedPreferences dh_sp = getSharedPreferences(sp_name, MODE_PRIVATE);
 
         // map containing all shared preference keys
         Map<String, ?> keys = dh_sp.getAll();
@@ -65,6 +66,26 @@ public class HistoryActivity extends AppCompatActivity {
                 diagnosis_title.add(entry.getKey());
                 diagnosis_info.add(entry.getValue().toString());
                 diagnosisAdapter.notifyDataSetChanged(); //this restarts the process of getCount()/
+
+                history_listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                        keys.entrySet();
+                        Log.i("this", diagnosis_info.get(i));
+                        Bundle bundle = new Bundle();
+                        bundle.putString("diagnosis_info", diagnosis_info.get(i));
+                        bundle.putString("sp_name", sp_name);
+                        bundle.putString("key", diagnosis_title.get(i));
+                        FragmentTransaction fragmentTransaction = getSupportFragmentManager()
+                                .beginTransaction();
+                        Fragment profileFragment = new diagnosis_details();//the fragment you want to show
+                        profileFragment.setArguments(bundle);
+                        fragmentTransaction
+                                .replace(R.id.layoutToBeReplacedWithFragmentInMenu, profileFragment);//R.id.content_frame is the layout you want to replace
+                        fragmentTransaction.addToBackStack(null);
+                        fragmentTransaction.commit();
+                    }
+                });
             }
         }
 
@@ -97,23 +118,7 @@ public class HistoryActivity extends AppCompatActivity {
             }
         });
 
-        history_listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                keys.entrySet();
-                Log.i("this", diagnosis_info.get(i));
-                Bundle bundle = new Bundle();
-                bundle.putString("diagnosis_info", diagnosis_info.get(i));
-                FragmentTransaction fragmentTransaction = getSupportFragmentManager()
-                        .beginTransaction();
-                Fragment profileFragment = new diagnosis_details();//the fragment you want to show
-                profileFragment.setArguments(bundle);
-                fragmentTransaction
-                        .replace(R.id.layoutToBeReplacedWithFragmentInMenu, profileFragment);//R.id.content_frame is the layout you want to replace
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
-            }
-        });
+
     }
 
     private class HistoryAdapter extends ArrayAdapter<String> {

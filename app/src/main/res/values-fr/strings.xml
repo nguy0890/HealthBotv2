@@ -46,7 +46,7 @@
     <string name="dh_frag_date_txt">Date:</string>
     <string name="dh_frag_symptom_txt">Les symptômes:</string>
     <string name="dh_frag_btn_txt">Supprimer le diagnostic</string>
-
+    <string name="delete_history_fragment">Voulez-vous vraiment supprimer ce diagnostic ?</string>
 
     <!--ChatActivity-->
     <string name="SendButton">Envoyer</string>
