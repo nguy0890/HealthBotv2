@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.Button;
 import android.content.SharedPreferences;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.snackbar.Snackbar;
@@ -85,13 +86,16 @@ public class MainActivity extends AppCompatActivity {
         Integer id = mi.getItemId();
         switch (id) {
             case R.id.menuHome:
-                Log.d("Toolbar", "You selected item 1");
+                Log.d("Toolbar", "You selected item Home");
                 break;
             case R.id.menuHistory:
-                Log.d("Toolbar", "You selected item 1");
+                Log.d("Toolbar", "You selected item History");
                 Intent intent = new Intent(MainActivity.this, HistoryActivity.class);
                 startActivityForResult(intent, 10);
                 break;
+            case R.id.menuAboutUs:
+                Log.d("Toolbar", "You selected item AboutUs");
+                aboutUsDialog();
         }
         return super.onOptionsItemSelected(mi);
     }
@@ -131,6 +135,10 @@ public class MainActivity extends AppCompatActivity {
                 warningDialog.dismiss();
             }
         });
+        }
+    private void aboutUsDialog() {
+        AboutUsDialog aboutUsDialog = new AboutUsDialog();
+        aboutUsDialog.show(getSupportFragmentManager(),"About Us Dialog");
     }
 
 
