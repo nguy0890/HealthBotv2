@@ -13,6 +13,8 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -45,6 +47,7 @@ public class HistoryActivity extends AppCompatActivity {
         HistoryAdapter diagnosisAdapter = new HistoryAdapter(this);
         ListView history_listView = findViewById(R.id.history_listView);
         Button clear_hist = findViewById(R.id.clear_hist_btn);
+        Button back = findViewById(R.id.dh_back_arrow);
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         //set adapter
         history_listView.setAdapter(diagnosisAdapter);
@@ -118,9 +121,29 @@ public class HistoryActivity extends AppCompatActivity {
             }
         });
 
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
 
     }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+        }
 
+        return super.onOptionsItemSelected(item);
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return true;
+    }
     private class HistoryAdapter extends ArrayAdapter<String> {
         protected static final String ACTIVITY_NAME = "HistoryAdapter";
 

@@ -92,6 +92,7 @@ public class diagnosis_details extends Fragment {
         String key = getArguments().getString("key");
         setDeleteButton(sp_name, key, rootview);
         setDiagnosisInfo(diagnosis_information, rootview);
+        setBackArrow(rootview);
         // Inflate the layout for this fragment
         return rootview;
     }
@@ -150,6 +151,17 @@ public class diagnosis_details extends Fragment {
         }catch (JSONException e){
             Log.w("fragment", "failed to set info");
         }
+    }
+
+    private void setBackArrow(View rootview){
+        Button back = (Button)  rootview.findViewById(R.id.dh_back_arrow);
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity().onBackPressed();
+            }
+        });
     }
 
     private class SymptomsAdapter extends ArrayAdapter<String> {
