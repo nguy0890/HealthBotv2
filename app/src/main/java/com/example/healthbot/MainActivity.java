@@ -33,9 +33,7 @@ import androidx.navigation.ui.AppBarConfiguration;
 public class MainActivity extends AppCompatActivity {
     protected static final String ACTIVITY_NAME = "MainActivity"; //debugging message
 
-    BottomNavigationView bottomNavigationView;
     Dialog warningDialog;
-    Button understoodButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
