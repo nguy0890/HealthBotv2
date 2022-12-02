@@ -58,6 +58,7 @@
     <string name="defaultResponse">Vous êtes en danger imminent ! Appelez s\'il vous plaît (***) ***-****</string>
 
     <!--    EditProfiles   -->
+    <string name="profiles">Profils</string>
     <string name="edit_info">Éditer</string>
     <string name="exit">Sortir</string>
     <string name="ok">Ok</string>
