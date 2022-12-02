@@ -107,6 +107,7 @@ public class HistoryActivity extends AppCompatActivity {
                         dh_sp_edit.commit();
                         finish();
                         startActivity(getIntent());
+                        Toast.makeText(getApplicationContext(), getString(R.string.clear_history_toast), Toast.LENGTH_SHORT).show();
                     }
                 });
                 builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {

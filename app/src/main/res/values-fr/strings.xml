@@ -40,6 +40,7 @@
     <string name="historyText">Historique du diagnostic</string>
     <string name="clear_hist">Histoire claire?</string>
     <string name="delete_history">Voulez-vous vraiment effacer l\'historique de vos diagnostics ?</string>
+    <string name="clear_history_toast">Histoire claire</string>
 
     <!--Details Fragment-->
     <string name="dh_frag_diag_txt">Diagnostic:</string>
@@ -48,6 +49,7 @@
     <string name="dh_frag_symptom_txt">Les symptômes:</string>
     <string name="dh_frag_btn_txt">Supprimer le diagnostic</string>
     <string name="delete_history_fragment">Voulez-vous vraiment supprimer ce diagnostic ?</string>
+    <string name="dh_frag_toast">Diagnostic Supprimer</string>
 
     <!--ChatActivity-->
     <string name="SendButton">Envoyer</string>

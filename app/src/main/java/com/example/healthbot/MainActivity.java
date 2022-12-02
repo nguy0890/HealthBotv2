@@ -33,11 +33,7 @@ import androidx.navigation.ui.AppBarConfiguration;
 public class MainActivity extends AppCompatActivity {
     protected static final String ACTIVITY_NAME = "MainActivity"; //debugging message
 
-    private AppBarConfiguration appBarConfiguration;
-
-    BottomNavigationView bottomNavigationView;
     Dialog warningDialog;
-    Button understoodButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +59,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Button chatBtn = findViewById(R.id.chatBtn);
+
+        chatBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) { addHistory(); }});
+
         //Warning button on click
         warningDialog = new Dialog(this);
         warningButton.setOnClickListener(new View.OnClickListener() {
@@ -72,12 +74,6 @@ public class MainActivity extends AppCompatActivity {
                 openWarningDialog();
             }
         });
-
-        Button chatBtn = findViewById(R.id.chatBtn);
-
-        chatBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) { addHistory(); }});
     }
 
     public boolean onCreateOptionsMenu(Menu m) {
@@ -124,6 +120,7 @@ public class MainActivity extends AppCompatActivity {
         dh_sp_edit.commit();
 
     }
+
     private void openWarningDialog() {
         warningDialog.setContentView(R.layout.warning_message);
         warningDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -143,5 +140,6 @@ public class MainActivity extends AppCompatActivity {
         AboutUsDialog aboutUsDialog = new AboutUsDialog();
         aboutUsDialog.show(getSupportFragmentManager(),"About Us Dialog");
     }
+
 
 }

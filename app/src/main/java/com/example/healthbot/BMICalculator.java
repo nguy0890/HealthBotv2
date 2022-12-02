@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.NumberPicker;
 import android.widget.Spinner;
 
@@ -21,6 +22,15 @@ public class BMICalculator extends AppCompatActivity {
         binding = ActivityBmicalculatorBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
+
+        Button back_arrow = findViewById(R.id.bmi_back_arrow);
+
+        back_arrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
         //Set minimum/maximum for the pickers
         binding.heightPicker.setMaxValue(250);
