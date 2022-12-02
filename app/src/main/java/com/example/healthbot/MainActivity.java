@@ -9,22 +9,32 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.content.SharedPreferences;
 import android.widget.ImageButton;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.snackbar.Snackbar;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
-
 import java.util.Calendar;
 import java.util.Date;
+
+import androidx.appcompat.widget.Toolbar;
+import androidx.navigation.ui.AppBarConfiguration;
 
 
 public class MainActivity extends AppCompatActivity {
     protected static final String ACTIVITY_NAME = "MainActivity"; //debugging message
 
+    private AppBarConfiguration appBarConfiguration;
+
+    BottomNavigationView bottomNavigationView;
     Dialog warningDialog;
     Button understoodButton;
 
@@ -32,7 +42,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
         //Declare button
         final Button bmiButton = findViewById(R.id.bmiButton);
 
@@ -60,24 +73,31 @@ public class MainActivity extends AppCompatActivity {
         });
 
         Button chatBtn = findViewById(R.id.chatBtn);
-        Button histBtn = findViewById(R.id.histBtn);
 
         chatBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                addHistory();
-            }
-        });
+            public void onClick(View view) { addHistory(); }});
+    }
 
-        histBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+    public boolean onCreateOptionsMenu(Menu m) {
+        getMenuInflater().inflate(R.menu.menu, m );
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem mi) {
+        Integer id = mi.getItemId();
+        switch (id) {
+            case R.id.menuHome:
+                Log.d("Toolbar", "You selected item 1");
+                break;
+            case R.id.menuHistory:
+                Log.d("Toolbar", "You selected item 1");
                 Intent intent = new Intent(MainActivity.this, HistoryActivity.class);
                 startActivityForResult(intent, 10);
-            }
-        });
-
-
+                break;
+        }
+        return super.onOptionsItemSelected(mi);
     }
     //temporary
     protected void addHistory(){

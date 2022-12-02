@@ -1,75 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/chatBtn"
-        android:layout_width="250dp"
-        android:layout_height="100dp"
-        android:icon="@drawable/robot_icon"
-        android:layout_marginTop="300dp"
-        android:text="Chat"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/histBtn"
-        android:layout_width="250dp"
-        android:layout_height="100dp"
-        android:icon="@drawable/robot_icon"
-        android:layout_marginTop="400dp"
-        android:text="History (temp)"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/chatBtn"/>
-
-    <View
-        android:layout_width="wrap_content"
-        android:layout_height="5dp"
-        android:background="#00bcd4"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/menu" />
-
-    <Button
-        android:id="@+id/bmiButton"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:text="@string/BMIButtonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-
-    <ImageButton
-        android:id="@+id/warningButton"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:background="@null"
-        android:src="@drawable/ic_baseline_warning_24"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/bmiButton"
-        app:layout_constraintTop_toTopOf="@id/bmiButton"
-        android:scaleType="fitCenter"/>
-
-
-
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/menu"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:elevation="0dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:menu="@menu/menu"
-        app:itemTextColor="#f44335"
-        app:labelVisibilityMode="selected"/>
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/white"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/robot_icon"
+            />
+
+        <TextView
+            android:id="@+id/custom_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:textSize="24sp"
+            android:textStyle="bold"/>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.appcompat.widget.Toolbar>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar">
+
+        <Button
+            android:id="@+id/chatBtn"
+            android:layout_width="250dp"
+            android:layout_height="100dp"
+            android:icon="@drawable/robot_icon"
+            android:layout_marginTop="300dp"
+            android:text="Chat"
+            android:layout_centerHorizontal="true"/>
+
+        <Button
+            android:id="@+id/bmiButton"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text="@string/BMIButtonName"
+            android:layout_centerHorizontal="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_below="@id/chatBtn"/>
+
+        <ImageButton
+            android:id="@+id/warningButton"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@null"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_baseline_warning_24"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true" />
+
+    </RelativeLayout>
+
+</RelativeLayout>
