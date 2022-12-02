@@ -63,6 +63,7 @@
     <string name="defaultResponse">You are in imminent danger! Please call (***) ***-****</string>
 
     <!--    EditProfiles   -->
+    <string name="profiles">Profiles</string>
     <string name="edit_info">Edit Info</string>
     <string name="exit">Exit</string>
     <!--    SharedPreferencesActivity   -->
