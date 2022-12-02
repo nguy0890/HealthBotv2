@@ -14,10 +14,16 @@
         app:showAsAction="always"
         android:icon="@drawable/history_icon" />
     <item
-        android:id="@+id/menuAboutUs"
+        android:id="@+id/menuHelp"
         android:title="AboutUs"
         android:orderInCategory="0"
         app:showAsAction="always"
         android:icon="@drawable/help_icon"/>
+
+    <item
+        android:id="@+id/menuAboutUs"
+        android:title="About Us"
+        android:orderInCategory="0"
+        app:showAsAction="never" />
 
 </menu>
