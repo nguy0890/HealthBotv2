@@ -61,17 +61,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button profileBtn = findViewById(R.id.profileBtn);
-
-        profileBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Log.i(ACTIVITY_NAME, "User clicked Profile Button");
-                Intent intent = new Intent(MainActivity.this, EditProfiles.class);
-                startActivityForResult(intent, 10);
-            }
-        });
-
         Button chatBtn = findViewById(R.id.chatBtn);
 
         chatBtn.setOnClickListener(new View.OnClickListener() {
