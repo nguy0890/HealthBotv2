@@ -107,9 +107,15 @@ public class MainActivity extends AppCompatActivity {
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
                 break;
+            case R.id.menuEditProfile:
+                Log.d("Toolbar", "You selected item EditProfile");
+                Intent intent_profile = new Intent(MainActivity.this, EditProfiles.class);
+                startActivityForResult(intent_profile, 10);
+                break;
             case R.id.menuAboutUs:
                 Log.d("Toolbar", "You selected item AboutUs");
                 aboutUsDialog();
+                break;
         }
         return super.onOptionsItemSelected(mi);
     }
