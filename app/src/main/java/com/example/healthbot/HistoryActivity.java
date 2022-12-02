@@ -31,7 +31,7 @@ import java.util.Map;
 
 public class HistoryActivity extends AppCompatActivity {
     protected static final String ACTIVITY_NAME = "HistoryActivity";
-    protected static final String sp_name = "history_sp";
+    protected static final String sp_name = "history_sp"; // temporary
     protected ArrayList<String> diagnosis_title = new ArrayList<String>();
     protected ArrayList<String> diagnosis_info = new ArrayList<String>();
 
