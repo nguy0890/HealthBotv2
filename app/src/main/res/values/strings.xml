@@ -10,19 +10,19 @@
     <string name="app_name">HealthBot</string>
     <string name="app_slogan">A Chatbot for Your Health</string>
     <string name="loginError">Incorrect Username/Password</string>
-    
-     <!-- BMI -->
+
+    <!-- BMI -->
     <string name="BMIName">Body Mass Index (BMI) Calculator</string>
     <string name="BMIButtonName">BMI</string>
     <string name="BMIHeight">Height</string>
     <string name="BMIWeight">Weight</string>
     <string name="BMIcm">cm</string>
     <string name="BMIkg">kg</string>
-    <string-array name = "heightSpinnerOptions">
+    <string-array name="heightSpinnerOptions">
         <item>cm</item>
         <item>in</item>
     </string-array>
-    <string-array name = "weightSpinnerOptions">
+    <string-array name="weightSpinnerOptions">
         <item>kg</item>
         <item>cm</item>
     </string-array>
@@ -55,7 +55,6 @@
     <string name="dh_frag_btn_txt">Delete Diagnosis</string>
 
 
-
     <!--ChatActivity-->
     <string name="SendButton">Send</string>
     <string name="defaultResponse">You are in imminent danger! Please call (***) ***-****</string>
@@ -68,6 +67,8 @@
     <string name="name_hint">Enter your name</string>
     <string name="email">Email</string>
     <string name="email_hint">Enter your email</string>
+    <string name="age">Age</string>
+    <string name="age_hint">Enter your age</string>
     <string name="gender">Gender</string>
     <string name="gender_male">Male</string>
     <string name="gender_female">Female</string>
