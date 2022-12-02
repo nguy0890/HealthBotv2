@@ -2,6 +2,9 @@ package com.example.healthbot;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
@@ -51,13 +54,31 @@ public class LoginActivity extends AppCompatActivity {
                     //Commit changes
                     spEdit.commit();
                     //Call MainActivity
-                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                    startActivity(intent);
+                    openWarningDialog();
                 } else {
                     loginError.setText(loginErrorText);
                 }
 
 
+            }
+        });
+    }
+
+    private void openWarningDialog() {
+        Dialog warningDialog = new Dialog(this);
+        warningDialog.setContentView(R.layout.warning_message);
+        warningDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        Button understoodButton = warningDialog.findViewById(R.id.understoodButton);
+        warningDialog.show();
+
+        //Warning button on click
+        understoodButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.i(ACTIVITY_NAME, "User clicked Understood Button");
+                warningDialog.dismiss();
+                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                startActivity(intent);
             }
         });
     }
