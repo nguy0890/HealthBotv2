@@ -14,5 +14,13 @@
         <!-- Customize your theme here. -->
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="overlapAnchor">false</item>
+        <item name="android:dropDownVerticalOffset">7.0dp</item>
+
+        <item name="android:actionOverflowButtonStyle">@style/custom_overflow</item>
+    </style>
+
+    <style name="custom_overflow">
+        <item name="android:src">@drawable/menu_icon</item>
     </style>
 </resources>
