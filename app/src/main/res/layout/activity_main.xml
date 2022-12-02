@@ -39,29 +39,12 @@
 
             <Button
                 android:id="@+id/chatBtn"
-                android:layout_width="wrap_content"
+                android:layout_width="250dp"
                 android:layout_height="100dp"
                 android:icon="@drawable/robot_icon"
-                android:layout_marginTop="80dp"
+                android:layout_marginTop="300dp"
                 android:text="Chat"
-                android:layout_centerHorizontal="true"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentStart="true"
-                android:layout_marginEnd="80dp"
-                android:layout_marginStart="80dp"/>
-
-            <Button
-                android:id="@+id/profileBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="100dp"
-                android:icon="@drawable/ic_baseline_person_24"
-                android:text="@string/profiles"
-                android:layout_centerHorizontal="true"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentStart="true"
-                android:layout_below="@id/chatBtn"
-                android:layout_marginEnd="80dp"
-                android:layout_marginStart="80dp"/>
+                android:layout_centerHorizontal="true"/>
 
             <Button
                 android:id="@+id/bmiButton"
@@ -72,7 +55,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:layout_below="@id/profileBtn"/>
+                android:layout_below="@id/chatBtn"/>
 
             <ImageButton
                 android:id="@+id/warningButton"
