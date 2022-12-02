@@ -72,4 +72,9 @@
     <string name="key_email">email</string>
     <string name="key_gender">gender</string>
     <string name="save_message">Enregistré</string>
+
+    <!--Warning-->
+    <string name="warning">Attention</string>
+    <string name="warningMsg">Cette application n\'est pas un véritable avis médical. Veuillez appeler le 911 pour des soins médicaux immédiats.</string>
+    <string name="understood">Confirmer.</string>
 </resources>
