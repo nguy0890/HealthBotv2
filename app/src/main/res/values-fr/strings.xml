@@ -19,6 +19,7 @@
         <item>kg</item>
         <item>cm</item>
     </string-array>
+    <string name="welcome">Bienvenue!</string>
 
     <!--LoginActivity-->
     <string name="banner_title">SantéChat</string>

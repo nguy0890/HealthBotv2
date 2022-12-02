@@ -10,6 +10,7 @@
     <string name="app_name">HealthBot</string>
     <string name="app_slogan">A Chatbot for Your Health</string>
     <string name="loginError">Incorrect Username/Password</string>
+    <string name="welcome">Welcome!</string>
 
     <!-- BMI -->
     <string name="BMIName">Body Mass Index (BMI) Calculator</string>
