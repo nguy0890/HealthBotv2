@@ -5,7 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".SharedPreferencesActivity">
+    tools:context=".adduser_activity">
+
+    <ImageView
+        android:src="@drawable/ic_baseline_person_24"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:scaleType="center"
+        android:background="@color/crystal_blue"
+        />
 
     <TextView
         android:layout_width="wrap_content"
@@ -15,32 +23,16 @@
     </TextView>
 
     <EditText
-        android:id="@+id/editName"
+        android:id="@+id/dialog_message_box"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_margin="5dp"
-        android:hint="@string/name_hint"
-        android:inputType="text"
-        android:singleLine="true" >
-    </EditText>
-
-    <TextView
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:text="@string/birth" >
-    </TextView>
-
-    <EditText
-        android:id="@+id/editBirth"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_margin="5dp"
-        android:hint="@string/birth_hint"
-        android:inputType="number"
-        android:maxLength="4"
-        android:singleLine="true" >
-    </EditText>
+        android:layout_marginTop="4dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginBottom="16dp"
+        android:minHeight="48dp"
+        android:inputType="text"
+        android:hint="@string/name_hint"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -70,6 +62,26 @@
             android:layout_weight="1"
             android:text="@string/gender_male" />
     </RadioGroup>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:text="@string/birth" >
+    </TextView>
+
+    <EditText
+        android:id="@+id/age_box"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginBottom="16dp"
+        android:minHeight="48dp"
+        android:inputType="number"
+        android:maxLength="4"
+        android:hint="@string/birth_hint"/>
 
     <LinearLayout
         android:layout_width="match_parent"
