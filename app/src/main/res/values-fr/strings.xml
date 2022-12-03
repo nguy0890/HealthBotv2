@@ -20,6 +20,8 @@
         <item>cm</item>
     </string-array>
     <string name="welcome">Bienvenue!</string>
+    <string name="BMIChartTitle">Indice IMC (Adulte)</string>
+    <string name="BmiChartText">Underweight: &lt;18.5\nNormal 18.5-24.9\nOverweight: 25-29.9\nObese:30+</string>
 
     <!--LoginActivity-->
     <string name="banner_title">SantéChat</string>
