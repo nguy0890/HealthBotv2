@@ -71,8 +71,8 @@
     <string name="name_hint">Enter your name</string>
     <string name="email">Email</string>
     <string name="email_hint">Enter your email</string>
-    <string name="age">Age</string>
-    <string name="age_hint">Enter your age</string>
+    <string name="birth">Birth Year</string>
+    <string name="birth_hint">Enter your Birth Year</string>
     <string name="gender">Gender</string>
     <string name="gender_male">Male</string>
     <string name="gender_female">Female</string>
@@ -80,7 +80,7 @@
     <string name="save">Save</string>
     <string name="preference_name">DefaultEmail</string><!--do not change file name-->
     <string name="key_name">name</string>
-    <string name="key_email">email</string>
+    <string name="key_birth">birth</string>
     <string name="key_gender">gender</string>
     <string name="save_message">Saved</string>
 
