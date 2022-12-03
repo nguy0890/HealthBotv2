@@ -25,17 +25,19 @@ public class SharedPreferencesActivity extends AppCompatActivity {
 
         Toast.makeText(getApplicationContext(),
                 getString(R.string.save_message), Toast.LENGTH_SHORT).show();
-        Intent mIntent = new Intent(SharedPreferencesActivity.this,
-                EditProfiles.class);
-        startActivity(mIntent);
+//        Intent mIntent = new Intent(SharedPreferencesActivity.this,
+//                EditProfiles.class);
+//        startActivity(mIntent);
+        finish();
     }
 
     public void onCancelClicked(View v) {
         Toast.makeText(getApplicationContext(),
                 getString(R.string.cancel), Toast.LENGTH_SHORT).show();
-        Intent mIntent = new Intent(SharedPreferencesActivity.this,
-                EditProfiles.class);
-        startActivity(mIntent);
+//        Intent mIntent = new Intent(SharedPreferencesActivity.this,
+//                EditProfiles.class);
+//        startActivity(mIntent);
+        finish();
     }
 
 
@@ -48,9 +50,9 @@ public class SharedPreferencesActivity extends AppCompatActivity {
         String new_name_value = myPrefs.getString(name_key, " ");
         ((EditText) findViewById(R.id.editName)).setText(new_name_value);
 
-        String  email_key = getString(R.string.key_email);
-        String new_email_value = myPrefs.getString(email_key, " ");
-        ((EditText) findViewById(R.id.editEmail)).setText(new_email_value);
+        String  birth_key = getString(R.string.key_birth);
+        String new_birth_value = myPrefs.getString(birth_key, " ");
+        ((EditText) findViewById(R.id.editBirth)).setText(new_birth_value);
 
         String gender_key = getString(R.string.key_gender);
         int mIntValue = myPrefs.getInt(gender_key, -1);
@@ -63,9 +65,6 @@ public class SharedPreferencesActivity extends AppCompatActivity {
                     .getChildAt(mIntValue);
             // Check the button.
             radioBtn.setChecked(true);
-            Toast.makeText(getApplicationContext(),
-                    "number of the radioButton is : " + mIntValue,
-                    Toast.LENGTH_SHORT).show();
         }
 
     }
@@ -82,10 +81,10 @@ public class SharedPreferencesActivity extends AppCompatActivity {
         String new_name_entered = ((EditText) findViewById(R.id.editName))
                 .getText().toString();
         myEditor.putString(name_key, new_name_entered);
-        String email_key  = getString(R.string.key_email);
-        String new_email_entered = ((EditText) findViewById(R.id.editEmail))
+        String birth_key  = getString(R.string.key_birth);
+        String new_birth_entered = ((EditText) findViewById(R.id.editBirth))
                 .getText().toString();
-        myEditor.putString(email_key, new_email_entered);
+        myEditor.putString(birth_key, new_birth_entered);
         String gender_key = getString(R.string.key_gender);
         RadioGroup mRadioGroup = findViewById(R.id.radioGender);
 
@@ -95,7 +94,7 @@ public class SharedPreferencesActivity extends AppCompatActivity {
         myEditor.putInt(gender_key, buttonSelected);
         myEditor.commit();
 
-        Toast.makeText(getApplicationContext(), "saved name: " + gender_key,
+        Toast.makeText(getApplicationContext(), "saved name: " + new_name_entered,
                 Toast.LENGTH_SHORT).show();
     }
 }

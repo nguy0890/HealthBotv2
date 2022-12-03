@@ -29,14 +29,17 @@ public class EditProfiles extends AppCompatActivity {
 
     protected static final String ACTIVITY_NAME = "EditProfiles"; //debugging message]
     private static final int REQUEST_IMAGE_CAPTURE = 1;
+    Bitmap newBitmap;
+    ImageButton btnImg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profiles);
+        Log.i(ACTIVITY_NAME, "In onResume()");
         loadUserData();
 
-        ImageButton btnImg = findViewById(R.id.profile_img);
+        btnImg = findViewById(R.id.profile_img);
 
         btnImg.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,13 +54,15 @@ public class EditProfiles extends AppCompatActivity {
         String file_name = getString(R.string.preference_name);
         SharedPreferences myPrefs = getSharedPreferences(file_name, MODE_PRIVATE);
 
+        if(newBitmap != null) btnImg.setImageBitmap(newBitmap);
+
         String  name_key = getString(R.string.key_name);
         String new_name_value = myPrefs.getString(name_key, " ");
         ((TextView) findViewById(R.id.text_name)).setText(new_name_value);
 
-        String  email_key = getString(R.string.key_email);
-        String new_email_value = myPrefs.getString(email_key, " ");
-        ((TextView) findViewById(R.id.text_email)).setText(new_email_value);
+        String  birth_key = getString(R.string.key_birth);
+        String new_birth_value = myPrefs.getString(birth_key, " ");
+        ((TextView) findViewById(R.id.text_birth)).setText(new_birth_value);
 
         String gender_key = getString(R.string.key_gender);
         int mIntValue = myPrefs.getInt(gender_key, -1);
@@ -65,17 +70,17 @@ public class EditProfiles extends AppCompatActivity {
 
         if (mIntValue >= 0) {
             // Find the radio button that should be checked.
-            RadioButton radioBtn = (RadioButton) ((RadioGroup)
-                    findViewById(R.id.radioGender))
-                    .getChildAt(mIntValue);
-            // Check the button.
-            radioBtn.setChecked(true);
+            if(findViewById(R.id.radioGender) != null){
+                RadioButton radioBtn = (RadioButton) ((RadioGroup)
+                        findViewById(R.id.radioGender))
+                        .getChildAt(mIntValue);
+                // Check the button.
+                radioBtn.setChecked(true);
+            }
             if(mIntValue == 0) ((TextView) findViewById(R.id.text_gender)).setText(R.string.gender_female);
             else if(mIntValue == 1) ((TextView) findViewById(R.id.text_gender)).setText(R.string.gender_male);
             else ((TextView) findViewById(R.id.text_gender)).setText(R.string.gender_unknown);
-            Toast.makeText(getApplicationContext(),
-                    "number of the radioButton is : " + mIntValue,
-                    Toast.LENGTH_SHORT).show();
+
         }
     }
 
@@ -86,11 +91,11 @@ public class EditProfiles extends AppCompatActivity {
                 resultCode == RESULT_OK) {
             Bundle extras = data.getExtras();
             Bitmap imageBitmap = (Bitmap) extras.get("data");
-            ImageButton btnImg = findViewById(R.id.profile_img);
+            btnImg = findViewById(R.id.profile_img);
 
             int width = Math.round((float) 1 * imageBitmap.getWidth());
             int height = Math.round((float) 1 * imageBitmap.getHeight());
-            Bitmap newBitmap = Bitmap.createScaledBitmap(imageBitmap, width,
+            newBitmap = Bitmap.createScaledBitmap(imageBitmap, width,
                     height, true);
 
             btnImg.setImageBitmap(newBitmap);
@@ -123,5 +128,12 @@ public class EditProfiles extends AppCompatActivity {
                 });
         AlertDialog dialog = builder.create();
         dialog.show();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.i(ACTIVITY_NAME, "In onResume()");
+        loadUserData();
     }
 }

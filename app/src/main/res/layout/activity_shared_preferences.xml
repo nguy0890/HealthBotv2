@@ -28,16 +28,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
-        android:text="@string/email" >
+        android:text="@string/birth" >
     </TextView>
 
     <EditText
-        android:id="@+id/editEmail"
+        android:id="@+id/editBirth"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_margin="5dp"
-        android:hint="@string/email_hint"
-        android:inputType="textEmailAddress"
+        android:hint="@string/birth_hint"
+        android:inputType="number"
+        android:maxLength="4"
         android:singleLine="true" >
     </EditText>
 

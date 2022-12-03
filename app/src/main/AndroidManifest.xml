@@ -21,27 +21,37 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HealthBot"
         tools:targetApi="31">
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".MainActivity" />
         <activity
             android:name=".ChatActivity"
-            android:exported="false">
+            android:exported="false"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".EditProfiles"
+            android:exported="false"
+            android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
             android:name=".SharedPreferencesActivity"
-            android:exported="false">
+            android:exported="false"
+            android:parentActivityName=".EditProfiles">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value=".MainActivity" />
         <activity
-            android:name=".EditProfiles"
-            android:exported="false">
+            android:name=".SharedPreferencesActivity"
+            android:exported="false"
+            android:parentActivityName=".EditProfiles">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
