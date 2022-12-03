@@ -11,6 +11,10 @@
     <string name="BMIWeight">Weight</string>
     <string name="BMIcm">cm</string>
     <string name="BMIkg">kg</string>
+    <string name="OpenChart">Montrer le graphique</string>
+    <string name="CloseChart">Cacher le graphique</string>
+    <string name="OpenSnack">Ouvert le graphique</string>
+    <string name="CloseSnack">Fermé le graphique</string>
     <string-array name = "heightSpinnerOptions">
         <item>cm</item>
         <item>in</item>

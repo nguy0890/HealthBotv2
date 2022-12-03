@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="top|center"
-    tools:context=".BMICalculator">
+    tools:context=".BMICalculator"
+    android:id="@+id/bmilayout">
 
     <include
         android:id="@+id/bmi_top_panel"
@@ -25,7 +26,7 @@
             android:textColor="#00bcd4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="30dp"
+            android:textSize="30sp"
             android:drawableLeft="@drawable/ic_baseline_vertical_align_center_24"/>
 
         <NumberPicker
@@ -38,7 +39,7 @@
         <TextView
             android:id="@+id/heightSpinner"
             android:text="@string/BMIcm"
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#00bcd4"
@@ -57,7 +58,7 @@
             android:text="@string/BMIWeight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="30dp"
+            android:textSize="30sp"
             android:textColor="#00bcd4"
             android:drawableLeft="@drawable/ic_baseline_swap_horiz_24"/>
 
@@ -70,7 +71,7 @@
         <TextView
             android:id="@+id/weightSpinner"
             android:text="@string/BMIkg"
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#00bcd4"/>
@@ -80,7 +81,7 @@
         android:id="@+id/BMIResult"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="35dp"
+        android:textSize="35sp"
         android:textColor="#f44335"
         android:padding="5dp"
         />
@@ -89,14 +90,21 @@
         android:id="@+id/BMIResultText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="35dp"
-        android:textColor="#f44335"
         android:padding="5dp"
-        />
+        android:textColor="#f44335"
+        android:textSize="35sp" />
+
+    <Button
+        android:id="@+id/OpenChart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/OpenChart"
+        android:textSize="25sp"/>
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:scaleType="fitCenter"
         android:src="@drawable/redrobot"/>
 
 </LinearLayout>
