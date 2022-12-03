@@ -63,7 +63,11 @@
 
     <!--ChatActivity-->
     <string name="SendButton">Envoyer</string>
-    <string name="defaultResponse">Vous êtes en danger imminent ! Appelez s\'il vous plaît (***) ***-****</string>
+    <string name="EntryMessage">Bonjour, veuillez entrer vos symptômes un par un. Lorsque vous avez terminé, tapez !Done. Pour une liste des symptômes, tapez !Symptoms</string>
+    <string name="InvalidResponse">Je suis désolé, c\'est une réponse invalide. Assurez-vous d\'avoir correctement tapé votre réponse et si vous avez besoin d\'un rappel du type Symptômes !Symptoms</string>
+    <string name="StillProcessing">Pardon! Nous traitons toujours votre dernier message, veuillez réessayer.</string>
+    <string name="Diagnosis">Problèmes de santé possibles du plus probable au moins probable:</string>
+
 
     <!--    EditProfiles   -->
     <string name="profiles">Profils</string>

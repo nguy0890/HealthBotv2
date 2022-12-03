@@ -71,7 +71,10 @@
 
     <!--ChatActivity-->
     <string name="SendButton">Send</string>
-    <string name="defaultResponse">You are in imminent danger! Please call (***) ***-****</string>
+    <string name="EntryMessage">Hello, please enter your symptoms one by one. When you\'re done type !Done. For a list of symptoms type !Symptoms</string>
+    <string name="InvalidResponse">I\'m sorry, that\'s an invalid response. Make sure you typed your response correctly and if you need a refresher of the Symptoms type !Symptoms</string>
+    <string name="StillProcessing">Sorry! We are still processing your last messsage please try again.</string>
+    <string name="Diagnosis">Possible health Issues from most to least likely:</string>
 
     <!--    EditProfiles   -->
     <string name="profiles">Profiles</string>
