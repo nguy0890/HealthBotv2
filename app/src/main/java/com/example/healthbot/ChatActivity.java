@@ -103,7 +103,7 @@ public class ChatActivity extends AppCompatActivity {
         new SymptomQuery().execute("https://healthservice.priaid.ch/symptoms?token=" + TOKEN + "&language=en-gb&format=xml");
 
         //Add starting message to chat list
-        messages.add("rHello, please enter your symptoms one by one. When you're done type !Done. For a list of symptoms type !Symptoms");
+        messages.add("r" + getString(R.string.EntryMessage));
         messageAdapter.notifyDataSetChanged();
 
         //Send button on click listener
@@ -132,14 +132,14 @@ public class ChatActivity extends AppCompatActivity {
                             patientSymptoms.add(symptomIDs.get(symptoms.indexOf(String.valueOf(chatText.getText()).toLowerCase())));
                         } else {
                             //add the response to the chat list
-                            messages.add("rI'm sorry, that's an invalid response. Make sure you typed your response correctly and if you need a refresher of the Symptoms type !Symptoms");
+                            messages.add("r" + getString(R.string.InvalidResponse));
                             messageAdapter.notifyDataSetChanged();
                         }
                         //Empty the message text field
                         chatText.setText("");
                     }
                 }else{
-                    messages.add("rSorry! We are still processing your last messsage please try again.");
+                    messages.add("r" + getString(R.string.StillProcessing));
                     messageAdapter.notifyDataSetChanged();
                 }
             }
@@ -192,7 +192,7 @@ public class ChatActivity extends AppCompatActivity {
         //add message to list and clear patientSymptoms after execute
         @Override
         protected void onPostExecute(String s){
-            messages.add("rPossible health Issues from most to least likely: \n" + String.join("\n", diagnosis));
+            messages.add("r" + getString(R.string.Diagnosis) +" \n" + String.join("\n", diagnosis));
             messageAdapter.notifyDataSetChanged();
 
             SharedPreferences dh_sp = getSharedPreferences("history_sp", MODE_PRIVATE);
