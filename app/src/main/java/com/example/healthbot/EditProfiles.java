@@ -23,7 +23,6 @@ public class EditProfiles extends AppCompatActivity {
     protected static final String ACTIVITY_NAME = "EditProfiles"; //debugging message]
     private ItemsDataSource datasource;
     private ArrayAdapter<User> mAdapter;
-    User newitem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +45,31 @@ public class EditProfiles extends AppCompatActivity {
         mAdapter = new ArrayAdapter <>(this,
                 android.R.layout.simple_list_item_1, values);
         mListView.setAdapter(mAdapter);
+
+        if(values.size() == 0){
+            User newitem = new User();
+            newitem.setUser("Guest");
+            newitem.setBirth(2000);
+            newitem.setGender(-1);
+            // Save the new comment to the database
+            User item = datasource.createItem(newitem);
+            mAdapter.add(item);
+            mAdapter.notifyDataSetChanged();
+        }
+    }
+
+    public User getUser(int id){
+        int count = mAdapter.getCount();
+        User chosen_user = new User();
+        boolean exists = false;
+        for(int i=0; i < count; i++){
+            if(mAdapter.getItemId(i) == id){
+                exists = true;
+                chosen_user = mAdapter.getItem(i);
+            }
+        }
+        if(exists == true) return chosen_user;
+        else return null;
     }
 
     public void onExitClicked(View v) {
