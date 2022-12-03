@@ -1,6 +1,7 @@
 package com.example.healthbot;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -28,6 +29,8 @@ import com.google.firebase.crashlytics.buildtools.reloc.org.apache.http.impl.cli
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
@@ -42,6 +45,8 @@ import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Base64;
+import java.util.Calendar;
+import java.util.Date;
 
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
@@ -75,11 +80,19 @@ public class ChatActivity extends AppCompatActivity {
 
         //Declare Design Elements
         Button sendButton = (Button) findViewById(R.id.sendbutton);
+        Button back_button = (Button) findViewById(R.id.chatbot_back_arrow);
         EditText chatText = (EditText) findViewById(R.id.chatText);
         ListView list = (ListView) findViewById(R.id.chatList);
 
         //Assign chat adapter to the chat list
         list.setAdapter (messageAdapter);
+
+        back_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 
         //Request the token from the api
         new TokenQuery().execute("https://authservice.priaid.ch/login?");
@@ -181,6 +194,30 @@ public class ChatActivity extends AppCompatActivity {
         protected void onPostExecute(String s){
             messages.add("rPossible health Issues from most to least likely: \n" + String.join("\n", diagnosis));
             messageAdapter.notifyDataSetChanged();
+
+            SharedPreferences dh_sp = getSharedPreferences("history_sp", MODE_PRIVATE);
+            Date currentTime = Calendar.getInstance().getTime();
+            JSONObject diagnosis_json = new JSONObject();
+            String[] diagnosis_details = diagnosis.toArray(new String[0]);
+            String[] symptoms_list = new String[patientSymptoms.size()];
+
+            for (int i = 0; i < patientSymptoms.size(); i++){
+                symptoms_list[i] = symptoms.get(Integer.parseInt(String.valueOf(symptomIDs.indexOf(patientSymptoms.get(i)))));
+            }
+
+            try {
+                diagnosis_json.put("diagnosis", String.join(",", diagnosis_details));
+                diagnosis_json.put("symptoms", String.join(",", symptoms_list));
+                diagnosis_json.put("date", currentTime);
+            } catch (JSONException e){
+                Log.i("main", "tough");
+            }
+
+            SharedPreferences.Editor dh_sp_edit = dh_sp.edit();
+
+            dh_sp_edit.putString(currentTime.toString(), diagnosis_json.toString());
+            dh_sp_edit.commit();
+
             patientSymptoms.clear();
             finished = true;
         }
