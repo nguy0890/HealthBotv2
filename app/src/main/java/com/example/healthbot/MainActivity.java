@@ -46,10 +46,20 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         //Declare button
-        final Button bmiButton = findViewById(R.id.bmiButton);
+        final ImageButton bmiButton = findViewById(R.id.bmiButton);
 
         //Buttons for warning message
         final ImageButton warningButton = findViewById(R.id.warningButton);
+
+        //Declare Chat button
+        final ImageButton chatBtn = findViewById(R.id.chatBtn);
+
+        //Declare Profile button
+        final ImageButton profileButton = findViewById(R.id.profileBtn);
+
+        //Declare History button
+        final ImageButton historyButton = findViewById(R.id.historyButton);
+
 
         //BMI button on click
         bmiButton.setOnClickListener(new View.OnClickListener() {
@@ -61,13 +71,28 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button chatBtn = findViewById(R.id.chatBtn);
 
         chatBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Log.i(ACTIVITY_NAME, "User clicked Chat Button");
                 Intent intent = new Intent(MainActivity.this, ChatActivity.class);
+                startActivityForResult(intent, 10);
+            }});
+
+        profileButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.i(ACTIVITY_NAME, "User clicked Profile Button");
+                Intent intent = new Intent(MainActivity.this, EditProfiles.class);
+                startActivityForResult(intent, 10);
+            }});
+
+        historyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.i(ACTIVITY_NAME, "User clicked History Button");
+                Intent intent = new Intent(MainActivity.this, HistoryActivity.class);
                 startActivityForResult(intent, 10);
             }});
 
