@@ -15,10 +15,17 @@
         android:icon="@drawable/history_icon" />
     <item
         android:id="@+id/menuHelp"
-        android:title="AboutUs"
+        android:title="Help Menu"
         android:orderInCategory="0"
         app:showAsAction="always"
         android:icon="@drawable/help_icon"/>
+
+    <item
+        android:id="@+id/menuEditProfile"
+        android:title="Edit Profile"
+        android:orderInCategory="0"
+        app:showAsAction="always"
+        android:icon="@drawable/edit_profile_icon"/>
 
     <item
         android:id="@+id/menuAboutUs"

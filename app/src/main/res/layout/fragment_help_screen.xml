@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#ffffff"
+    android:background="@color/white"
     tools:context=".HelpScreenFragment">
 
     <LinearLayout
@@ -83,7 +83,6 @@
                 android:padding="5dp"
                 android:textSize="15sp"
                 android:drawableLeft="@drawable/ic_baseline_filter_5_24"/>
-
 
         </RelativeLayout>
 

@@ -65,6 +65,7 @@
     <string name="defaultResponse">Vous êtes en danger imminent ! Appelez s\'il vous plaît (***) ***-****</string>
 
     <!--    EditProfiles   -->
+    <string name="profiles">Profils</string>
     <string name="edit_info">Éditer</string>
     <string name="exit">Sortir</string>
     <string name="ok">Ok</string>
@@ -73,6 +74,10 @@
     <string name="name_hint">Entrez votre nom</string>
     <string name="email">Email</string>
     <string name="email_hint">Entrer votre Email</string>
+    <string name="age">Age</string>
+    <string name="age_hint">Entrez votre Age</string>
+    <string name="birth">Année de naissance</string>
+    <string name="birth_hint">Entrez votre année de naissance</string>
     <string name="gender">Le genre</string>
     <string name="gender_male">Mâle</string>
     <string name="gender_female">Femelle</string>
@@ -81,7 +86,7 @@
     <string name="cancel">Annuler</string>
     <string name="preference_name">DefaultEmail</string><!--do not change file name-->
     <string name="key_name">name</string>
-    <string name="key_email">email</string>
+    <string name="key_birth">birth</string>
     <string name="key_gender">gender</string>
     <string name="save_message">Enregistré</string>
 
@@ -89,4 +94,7 @@
     <string name="warning">Attention</string>
     <string name="warningMsg">Cette application n\'est pas un véritable avis médical. Veuillez appeler le 911 pour des soins médicaux immédiats.</string>
     <string name="understood">Confirmer.</string>
+
+    <!--Help Activity-->
+    <string name="help_name">centre d\'aide</string>
 </resources>

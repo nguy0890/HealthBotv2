@@ -68,12 +68,12 @@
     <string name="delete_history_fragment">Are you sure you want to delete this diagnosis?</string>
     <string name="dh_frag_toast">Diagnosis Deleted</string>
 
-
     <!--ChatActivity-->
     <string name="SendButton">Send</string>
     <string name="defaultResponse">You are in imminent danger! Please call (***) ***-****</string>
 
     <!--    EditProfiles   -->
+    <string name="profiles">Profiles</string>
     <string name="edit_info">Edit Info</string>
     <string name="exit">Exit</string>
     <!--    SharedPreferencesActivity   -->
@@ -81,6 +81,10 @@
     <string name="name_hint">Enter your name</string>
     <string name="email">Email</string>
     <string name="email_hint">Enter your email</string>
+    <string name="age">Age</string>
+    <string name="age_hint">Enter your Age</string>
+    <string name="birth">Birth Year</string>
+    <string name="birth_hint">Enter your Year of Birth</string>
     <string name="gender">Gender</string>
     <string name="gender_male">Male</string>
     <string name="gender_female">Female</string>
@@ -88,7 +92,7 @@
     <string name="save">Save</string>
     <string name="preference_name">DefaultEmail</string><!--do not change file name-->
     <string name="key_name">name</string>
-    <string name="key_email">email</string>
+    <string name="key_birth">birth</string>
     <string name="key_gender">gender</string>
     <string name="save_message">Saved</string>
 
@@ -96,7 +100,9 @@
     <string name="warning">Caution</string>
     <string name="warningMsg">This application is not real medical advice. Please call 911 for immediate medical attention.</string>
     <string name="understood">Understood.</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
+    <!--Help Activity-->
+    <string name="help_name">Help Center</string>
 
 
 </resources>
