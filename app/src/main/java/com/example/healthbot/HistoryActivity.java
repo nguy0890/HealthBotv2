@@ -13,6 +13,8 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -31,6 +33,7 @@ import java.util.Map;
 
 public class HistoryActivity extends AppCompatActivity {
     protected static final String ACTIVITY_NAME = "HistoryActivity";
+    protected static final String sp_name = "history_sp"; // temporary
     protected ArrayList<String> diagnosis_title = new ArrayList<String>();
     protected ArrayList<String> diagnosis_info = new ArrayList<String>();
 
@@ -44,12 +47,13 @@ public class HistoryActivity extends AppCompatActivity {
         HistoryAdapter diagnosisAdapter = new HistoryAdapter(this);
         ListView history_listView = findViewById(R.id.history_listView);
         Button clear_hist = findViewById(R.id.clear_hist_btn);
+        Button back = findViewById(R.id.dh_back_arrow);
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         //set adapter
         history_listView.setAdapter(diagnosisAdapter);
 
         //initialize sharedpreferences
-        SharedPreferences dh_sp = getSharedPreferences("history_sp", MODE_PRIVATE);
+        SharedPreferences dh_sp = getSharedPreferences(sp_name, MODE_PRIVATE);
 
         // map containing all shared preference keys
         Map<String, ?> keys = dh_sp.getAll();
@@ -65,6 +69,26 @@ public class HistoryActivity extends AppCompatActivity {
                 diagnosis_title.add(entry.getKey());
                 diagnosis_info.add(entry.getValue().toString());
                 diagnosisAdapter.notifyDataSetChanged(); //this restarts the process of getCount()/
+
+                history_listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                        keys.entrySet();
+                        Log.i("this", diagnosis_info.get(i));
+                        Bundle bundle = new Bundle();
+                        bundle.putString("diagnosis_info", diagnosis_info.get(i));
+                        bundle.putString("sp_name", sp_name);
+                        bundle.putString("key", diagnosis_title.get(i));
+                        FragmentTransaction fragmentTransaction = getSupportFragmentManager()
+                                .beginTransaction();
+                        Fragment profileFragment = new diagnosis_details();//the fragment you want to show
+                        profileFragment.setArguments(bundle);
+                        fragmentTransaction
+                                .replace(R.id.layoutToBeReplacedWithFragmentInMenu, profileFragment);//R.id.content_frame is the layout you want to replace
+                        fragmentTransaction.addToBackStack(null);
+                        fragmentTransaction.commit();
+                    }
+                });
             }
         }
 
@@ -83,6 +107,7 @@ public class HistoryActivity extends AppCompatActivity {
                         dh_sp_edit.commit();
                         finish();
                         startActivity(getIntent());
+                        Toast.makeText(getApplicationContext(), getString(R.string.clear_history_toast), Toast.LENGTH_SHORT).show();
                     }
                 });
                 builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
@@ -97,25 +122,29 @@ public class HistoryActivity extends AppCompatActivity {
             }
         });
 
-        history_listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        back.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                keys.entrySet();
-                Log.i("this", diagnosis_info.get(i));
-                Bundle bundle = new Bundle();
-                bundle.putString("diagnosis_info", diagnosis_info.get(i));
-                FragmentTransaction fragmentTransaction = getSupportFragmentManager()
-                        .beginTransaction();
-                Fragment profileFragment = new diagnosis_details();//the fragment you want to show
-                profileFragment.setArguments(bundle);
-                fragmentTransaction
-                        .replace(R.id.layoutToBeReplacedWithFragmentInMenu, profileFragment);//R.id.content_frame is the layout you want to replace
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
+            public void onClick(View view) {
+                finish();
             }
         });
+
+
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return true;
+    }
     private class HistoryAdapter extends ArrayAdapter<String> {
         protected static final String ACTIVITY_NAME = "HistoryAdapter";
 

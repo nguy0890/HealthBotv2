@@ -1,6 +1,11 @@
 package com.example.healthbot;
 
+import static android.content.Context.MODE_PRIVATE;
+
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -12,8 +17,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -28,6 +36,13 @@ import java.util.ArrayList;
  * create an instance of this fragment.
  */
 public class diagnosis_details extends Fragment {
+
+    private final View.OnClickListener deleteOnClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+
+        }
+    };
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -68,20 +83,60 @@ public class diagnosis_details extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootview = inflater.inflate(R.layout.fragment_diagnosis_details, container, false);
-        setDiagnosisInfo(getArguments().getString("diagnosis_info"), rootview);
+        String diagnosis_information = getArguments().getString("diagnosis_info");
+        String sp_name = getArguments().getString("sp_name");
+        String key = getArguments().getString("key");
+        setDeleteButton(sp_name, key, rootview);
+        setDiagnosisInfo(diagnosis_information, rootview);
+        setBackArrow(rootview);
         // Inflate the layout for this fragment
         return rootview;
     }
 
-    public void setDiagnosisInfo(String text, View rootview){
+    private void setDeleteButton(String sp_name, String text, View rootview){
+        Button delete_btn =  rootview.findViewById(R.id.dh_frag_delete_btn);
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+
+        delete_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog dialog;
+                SharedPreferences dh_sp = getActivity().getSharedPreferences(sp_name, MODE_PRIVATE);
+                SharedPreferences.Editor dh_sp_edit = dh_sp.edit();
+                builder.setTitle(R.string.delete_history_fragment);
+                // Add the buttons
+                builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // User clicked OK button
+                        Log.i("Diagnosis Fragment", "Confirm Deletion");
+                        dh_sp_edit.remove(text);
+                        dh_sp_edit.commit();
+                        getActivity().recreate();
+                        getActivity().onBackPressed();
+                        Toast.makeText(rootview.getContext(),rootview.getResources().getString(R.string.dh_frag_toast), Toast.LENGTH_SHORT).show();
+                    }
+                });
+                builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // User cancelled the dialog
+                        Log.i("Diagnosis Fragment", "Cancelled");
+                    }
+                });
+                // Create the AlertDialog
+                dialog = builder.create();
+                dialog.show();
+
+            }
+        });
+    }
+
+    private void setDiagnosisInfo(String text, View rootview){
         TextView diagnosis = (TextView) rootview.findViewById(R.id.dh_frag_diag);
         TextView date =  (TextView) rootview.findViewById(R.id.dh_frag_date);
         diagnosis_details.SymptomsAdapter symptomsAdapter = new diagnosis_details.SymptomsAdapter(getContext());
@@ -99,6 +154,17 @@ public class diagnosis_details extends Fragment {
         }catch (JSONException e){
             Log.w("fragment", "failed to set info");
         }
+    }
+
+    private void setBackArrow(View rootview){
+        Button back = (Button)  rootview.findViewById(R.id.dh_back_arrow);
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity().onBackPressed();
+            }
+        });
     }
 
     private class SymptomsAdapter extends ArrayAdapter<String> {

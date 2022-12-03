@@ -10,6 +10,7 @@
     <string name="app_name">HealthBot</string>
     <string name="app_slogan">A Chatbot for Your Health</string>
     <string name="loginError">Incorrect Username/Password</string>
+    <string name="welcome">Welcome!</string>
 
     <!-- BMI -->
     <string name="BMIName">Body Mass Index (BMI) Calculator</string>
@@ -18,6 +19,8 @@
     <string name="BMIWeight">Weight</string>
     <string name="BMIcm">cm</string>
     <string name="BMIkg">kg</string>
+    <string name="BMIChartTitle">BMI Index (Adult)</string>
+    <string name="BmiChartText">Underweight: &lt;18.5\nNormal 18.5-24.9\nOverweight: 25-29.9\nObese:30+</string>
     <string-array name="heightSpinnerOptions">
         <item>cm</item>
         <item>in</item>
@@ -46,6 +49,7 @@
     <string name="historyText">Diagnosis History</string>
     <string name="clear_hist">Clear History?</string>
     <string name="delete_history">Are you sure you want to clear your diagnosis history?</string>
+    <string name="clear_history_toast">History Cleared</string>
 
     <!--Details Fragment-->
     <string name="dh_frag_diag_txt">Diagnosis:</string>
@@ -53,13 +57,15 @@
     <string name="dh_frag_date_txt">Date:</string>
     <string name="dh_frag_symptom_txt">Symptoms:</string>
     <string name="dh_frag_btn_txt">Delete Diagnosis</string>
-
+    <string name="delete_history_fragment">Are you sure you want to delete this diagnosis?</string>
+    <string name="dh_frag_toast">Diagnosis Deleted</string>
 
     <!--ChatActivity-->
     <string name="SendButton">Send</string>
     <string name="defaultResponse">You are in imminent danger! Please call (***) ***-****</string>
 
     <!--    EditProfiles   -->
+    <string name="profiles">Profiles</string>
     <string name="edit_info">Edit Info</string>
     <string name="exit">Exit</string>
     <!--    SharedPreferencesActivity   -->
@@ -67,6 +73,8 @@
     <string name="name_hint">Enter your name</string>
     <string name="email">Email</string>
     <string name="email_hint">Enter your email</string>
+    <string name="age">Age</string>
+    <string name="age_hint">Enter your age</string>
     <string name="gender">Gender</string>
     <string name="gender_male">Male</string>
     <string name="gender_female">Female</string>
@@ -82,5 +90,9 @@
     <string name="warning">Caution</string>
     <string name="warningMsg">This application is not real medical advice. Please call 911 for immediate medical attention.</string>
     <string name="understood">Understood.</string>
+
+    <!--Help Activity-->
+    <string name="help_name">Help Center</string>
+
 
 </resources>

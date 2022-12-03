@@ -19,6 +19,9 @@
         <item>kg</item>
         <item>cm</item>
     </string-array>
+    <string name="welcome">Bienvenue!</string>
+    <string name="BMIChartTitle">Indice IMC (Adulte)</string>
+    <string name="BmiChartText">Underweight: &lt;18.5\nNormal 18.5-24.9\nOverweight: 25-29.9\nObese:30+</string>
 
     <!--LoginActivity-->
     <string name="banner_title">SantéChat</string>
@@ -39,6 +42,7 @@
     <string name="historyText">Historique du diagnostic</string>
     <string name="clear_hist">Histoire claire?</string>
     <string name="delete_history">Voulez-vous vraiment effacer l\'historique de vos diagnostics ?</string>
+    <string name="clear_history_toast">Histoire claire</string>
 
     <!--Details Fragment-->
     <string name="dh_frag_diag_txt">Diagnostic:</string>
@@ -46,13 +50,15 @@
     <string name="dh_frag_date_txt">Date:</string>
     <string name="dh_frag_symptom_txt">Les symptômes:</string>
     <string name="dh_frag_btn_txt">Supprimer le diagnostic</string>
-
+    <string name="delete_history_fragment">Voulez-vous vraiment supprimer ce diagnostic ?</string>
+    <string name="dh_frag_toast">Diagnostic Supprimer</string>
 
     <!--ChatActivity-->
     <string name="SendButton">Envoyer</string>
     <string name="defaultResponse">Vous êtes en danger imminent ! Appelez s\'il vous plaît (***) ***-****</string>
 
     <!--    EditProfiles   -->
+    <string name="profiles">Profils</string>
     <string name="edit_info">Éditer</string>
     <string name="exit">Sortir</string>
     <string name="ok">Ok</string>
@@ -61,6 +67,8 @@
     <string name="name_hint">Entrez votre nom</string>
     <string name="email">Email</string>
     <string name="email_hint">Entrer votre Email</string>
+    <string name="age">âge</string>
+    <string name="age_hint">Entrez votre âge</string>
     <string name="gender">Le genre</string>
     <string name="gender_male">Mâle</string>
     <string name="gender_female">Femelle</string>
@@ -77,4 +85,7 @@
     <string name="warning">Attention</string>
     <string name="warningMsg">Cette application n\'est pas un véritable avis médical. Veuillez appeler le 911 pour des soins médicaux immédiats.</string>
     <string name="understood">Confirmer.</string>
+
+    <!--Help Activity-->
+    <string name="help_name">centre d\'aide</string>
 </resources>

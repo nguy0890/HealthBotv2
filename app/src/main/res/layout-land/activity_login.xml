@@ -10,37 +10,41 @@
         android:id="@+id/signInText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:gravity="center"
         android:text="@string/welcome"
         android:textColor="#00bcd4"
-        android:textSize="50sp"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:layout_marginTop="150dp" />
+        android:textSize="40sp"
+        android:textStyle="bold" />
+
     <EditText
         android:id="@+id/signIn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/signInText"
+        android:layout_margin="0dp"
+        android:layout_marginTop="0dp"
         android:background="#30000000"
-        android:textColor="#2f5751"
-        android:textColorHint="#2f5751"
-        android:hint="@string/loginHint"
-        android:layout_margin="10dp"
-        android:padding="20dp"
         android:drawableLeft="@drawable/ic_baseline_person_24"
         android:drawablePadding="30dp"
-        android:textStyle="bold"
-        android:inputType="text"/>
+        android:hint="@string/loginHint"
+        android:inputType="text"
+        android:padding="20dp"
+        android:textColor="#2f5751"
+        android:textColorHint="#2f5751"
+        android:textSize="15sp"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/signIn"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="0dp"
         android:background="#30000000"
         android:drawableLeft="@drawable/ic_baseline_password_24"
         android:drawablePadding="30dp"
@@ -49,6 +53,7 @@
         android:password="true"
         android:textColor="#2f5751"
         android:textColorHint="#2f5751"
+        android:textSize="15sp"
         android:inputType="text"/>
 
     <TextView
@@ -57,6 +62,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:textColor="#FF0000"
+        android:textSize="15sp"
         android:layout_below="@id/password"/>
 
     <Button
@@ -65,13 +71,14 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/loginError"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
+        android:layout_margin="10dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="20dp"
         android:layout_marginBottom="10dp"
         android:backgroundTint="#00bcd4"
         android:text="@string/loginButtonText"
-        android:textSize="20sp" />
+        android:textSize="15sp" />
 
     <TextView
         android:id="@+id/forgotPassword"
@@ -80,10 +87,11 @@
         android:layout_below="@id/loginButton"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="0dp"
         android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="0dp"
         android:text="@string/forgotText"
+        android:textSize="15sp"
         android:textColor="#2f5751" />
 
     <TextView
@@ -98,17 +106,18 @@
         android:id="@+id/icons"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/forgotPassword"
         android:layout_alignParentBottom="true"
         android:gravity="center"
-        android:layout_marginBottom="75dp"
+        android:layout_marginBottom="10dp"
         android:background="#50ffffff">
         <ImageView
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_margin="5dp" />
         <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_margin="5dp"
             android:src="@drawable/robot_icon"/>
         <ImageView

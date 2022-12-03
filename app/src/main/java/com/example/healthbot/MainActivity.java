@@ -9,30 +9,42 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.content.SharedPreferences;
 import android.widget.ImageButton;
+import android.widget.TextView;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.snackbar.Snackbar;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-
 import java.util.Calendar;
 import java.util.Date;
+
+import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.ui.AppBarConfiguration;
 
 
 public class MainActivity extends AppCompatActivity {
     protected static final String ACTIVITY_NAME = "MainActivity"; //debugging message
 
     Dialog warningDialog;
-    Button understoodButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
         //Declare button
         final Button bmiButton = findViewById(R.id.bmiButton);
 
@@ -49,6 +61,23 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Button profileBtn = findViewById(R.id.profileBtn);
+
+        profileBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.i(ACTIVITY_NAME, "User clicked Profile Button");
+                Intent intent = new Intent(MainActivity.this, EditProfiles.class);
+                startActivityForResult(intent, 10);
+            }
+        });
+
+        Button chatBtn = findViewById(R.id.chatBtn);
+
+        chatBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) { addHistory(); }});
+
         //Warning button on click
         warningDialog = new Dialog(this);
         warningButton.setOnClickListener(new View.OnClickListener() {
@@ -58,29 +87,48 @@ public class MainActivity extends AppCompatActivity {
                 openWarningDialog();
             }
         });
+    }
 
-        Button chatBtn = findViewById(R.id.chatBtn);
-        Button histBtn = findViewById(R.id.histBtn);
+    public boolean onCreateOptionsMenu(Menu m) {
+        getMenuInflater().inflate(R.menu.menu, m );
+        return true;
+    }
 
-        chatBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //addHistory();
-                Log.i(ACTIVITY_NAME, "User clicked Chat Button");
-                Intent intent = new Intent(MainActivity.this, ChatActivity.class);
+    @Override
+    public boolean onOptionsItemSelected(MenuItem mi) {
+        Integer id = mi.getItemId();
+        switch (id) {
+            case R.id.menuHome:
+                Log.d("Toolbar", "You selected item Home");
+                Intent intent = new Intent(MainActivity.this, MainActivity.class);
                 startActivityForResult(intent, 10);
-            }
-        });
-
-        histBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, HistoryActivity.class);
-                startActivityForResult(intent, 10);
-            }
-        });
-
-
+                break;
+            case R.id.menuHistory:
+                Log.d("Toolbar", "You selected item History");
+                Intent intent_hist = new Intent(MainActivity.this, HistoryActivity.class);
+                startActivityForResult(intent_hist, 10);
+                break;
+            case R.id.menuHelp:
+                Log.d("Toolbar", "You selected item Help");
+                FragmentTransaction fragmentTransaction = getSupportFragmentManager()
+                        .beginTransaction();
+                Fragment profileFragment = new HelpScreenFragment();//the fragment you want to show
+                fragmentTransaction
+                        .replace(R.id.layoutToBeReplacedWithFragmentinMain, profileFragment);//R.id.content_frame is the layout you want to replace
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+                break;
+            case R.id.menuEditProfile:
+                Log.d("Toolbar", "You selected item EditProfile");
+                Intent intent_profile = new Intent(MainActivity.this, EditProfiles.class);
+                startActivityForResult(intent_profile, 10);
+                break;
+            case R.id.menuAboutUs:
+                Log.d("Toolbar", "You selected item AboutUs");
+                aboutUsDialog();
+                break;
+        }
+        return super.onOptionsItemSelected(mi);
     }
     //temporary
     protected void addHistory(){
@@ -103,6 +151,7 @@ public class MainActivity extends AppCompatActivity {
         dh_sp_edit.commit();
 
     }
+
     private void openWarningDialog() {
         warningDialog.setContentView(R.layout.warning_message);
         warningDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -117,6 +166,11 @@ public class MainActivity extends AppCompatActivity {
                 warningDialog.dismiss();
             }
         });
+        }
+    private void aboutUsDialog() {
+        AboutUsDialog aboutUsDialog = new AboutUsDialog();
+        aboutUsDialog.show(getSupportFragmentManager(),"About Us Dialog");
     }
+
 
 }
