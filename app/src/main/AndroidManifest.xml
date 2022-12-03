@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <uses-feature
         android:name="android.hardware.camera.any"
         android:required="true" />
@@ -23,8 +25,25 @@
             android:name="android.support.PARENT_ACTIVITY"
             android:value=".MainActivity" />
         <activity
+            android:name=".ChatActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".EditProfiles"
-            android:exported="false">
+            android:exported="false"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".SharedPreferencesActivity"
+            android:exported="false"
+            android:parentActivityName=".EditProfiles">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

@@ -19,6 +19,8 @@
     <string name="BMIWeight">Weight</string>
     <string name="BMIcm">cm</string>
     <string name="BMIkg">kg</string>
+    <string name="BMIChartTitle">BMI Index (Adult)</string>
+    <string name="BmiChartText">Underweight: &lt;18.5\nNormal 18.5-24.9\nOverweight: 25-29.9\nObese:30+</string>
     <string-array name="heightSpinnerOptions">
         <item>cm</item>
         <item>in</item>
