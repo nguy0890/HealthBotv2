@@ -12,6 +12,14 @@
     <string name="loginError">Incorrect Username/Password</string>
     <string name="welcome">Welcome!</string>
 
+    <!--Tutorial-->
+    <string name="tutorial1">What are the features of Healthbot?</string>
+    <string name="tutorial2">BMI Calculator:\nAdjust the number picks to your height (cm) and weight (kg). Your calculated BMI will be shown below. Click on the Red Robot at the bottom to see the BMI chart.</string>
+    <string name="tutorial3">Profile:\nCreate your profile including your age, sex, and year of birth.</string>
+    <string name="tutorial4">Chat bot:\nEnter your symptoms (Enter !symptoms for a list) line by line. After, enter !Done to finish and receive your diagnosis.</string>
+    <string name="tutorial5">Historique des diagnostics:\nConsultez l\'historique de vos diagnostics ici. Cliquez dessus pour plus de détails</string>
+
+
     <!-- BMI -->
     <string name="BMIName">Body Mass Index (BMI) Calculator</string>
     <string name="BMIButtonName">BMI</string>

@@ -23,9 +23,66 @@
             android:layout_height="match_parent">
 
             <TextView
+                android:clickable="false"
+                android:id="@+id/t1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Hello"/>
+                android:text="@string/tutorial1"
+                android:padding="5dp"
+                android:background="#80000000"
+                android:textStyle="bold"
+                android:textSize="25sp"/>
+            <TextView
+                android:id="@+id/t2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/tutorial2"
+                android:layout_below="@+id/t1"
+                android:padding="5dp"
+                android:textSize="15sp"
+                android:drawableLeft="@drawable/ic_baseline_filter_1_24"/>
+
+            <TextView
+                android:id="@+id/t3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/tutorial3"
+                android:layout_below="@+id/t2"
+                android:padding="5dp"
+                android:background="#30000000"
+                android:textSize="15sp"
+                android:drawableLeft="@drawable/ic_baseline_filter_2_24"/>
+
+            <TextView
+                android:id="@+id/t4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/tutorial4"
+                android:layout_below="@+id/t3"
+                android:padding="5dp"
+                android:textSize="15sp"
+                android:drawableLeft="@drawable/ic_baseline_filter_3_24"/>
+
+            <TextView
+                android:id="@+id/t5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/tutorial5"
+                android:layout_below="@+id/t4"
+                android:padding="5dp"
+                android:background="#30000000"
+                android:textSize="15sp"
+                android:drawableLeft="@drawable/ic_baseline_filter_4_24"/>
+
+            <TextView
+                android:id="@+id/t6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/tutorial5"
+                android:layout_below="@+id/t5"
+                android:padding="5dp"
+                android:textSize="15sp"
+                android:drawableLeft="@drawable/ic_baseline_filter_5_24"/>
 
         </RelativeLayout>
 
