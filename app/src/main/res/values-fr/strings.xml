@@ -29,6 +29,7 @@
     <string name="tutorial3">Profile:\nCréez votre profil en indiquant votre âge, votre sexe et votre année de naissance.</string>
     <string name="tutorial4">Chat bot:\nEntrez vos symptômes (Entrez !symptômes pour une liste) ligne par ligne. Après, entrez !Terminé pour terminer et recevoir votre diagnostic.</string>
     <string name="tutorial5">Écran de connexion :\nentrez vos informations d\'identification pour vous connecter.</string>
+    <string name="tutorial6">Historique des diagnostics:\nConsultez l\'historique de vos diagnostics ici. Cliquez dessus pour plus de détails</string>
 
     <!--LoginActivity-->
     <string name="banner_title">SantéChat</string>

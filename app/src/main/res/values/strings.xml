@@ -17,7 +17,8 @@
     <string name="tutorial2">BMI Calculator:\nAdjust the number picks to your height (cm) and weight (kg). Your calculated BMI will be shown below. Click on the Red Robot at the bottom to see the BMI chart.</string>
     <string name="tutorial3">Profile:\nCreate your profile including your age, sex, and year of birth.</string>
     <string name="tutorial4">Chat bot:\nEnter your symptoms (Enter !symptoms for a list) line by line. After, enter !Done to finish and receive your diagnosis.</string>
-    <string name="tutorial5">Historique des diagnostics:\nConsultez l\'historique de vos diagnostics ici. Cliquez dessus pour plus de détails</string>
+    <string name="tutorial5">Login screen:\nEnter your credentials to log in (any password is OK but cannot be empty).</string>
+    <string name="tutorial6">Diagnosis History:\nView your diagnosis history here. Click on them for more details.</string>
 
 
     <!-- BMI -->

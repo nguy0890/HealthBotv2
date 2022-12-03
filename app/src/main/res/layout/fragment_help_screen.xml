@@ -78,7 +78,7 @@
                 android:id="@+id/t6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/tutorial5"
+                android:text="@string/tutorial6"
                 android:layout_below="@+id/t5"
                 android:padding="5dp"
                 android:textSize="15sp"
