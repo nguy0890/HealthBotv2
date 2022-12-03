@@ -49,6 +49,7 @@ public class diagnosis_details extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     protected ArrayList<String> symptoms_list = new ArrayList<String>();
+    protected ArrayList<String> diagnosis_list = new ArrayList<String>();
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -137,16 +138,19 @@ public class diagnosis_details extends Fragment {
     }
 
     private void setDiagnosisInfo(String text, View rootview){
-        TextView diagnosis = (TextView) rootview.findViewById(R.id.dh_frag_diag);
+        ListView diagnosis = (ListView) rootview.findViewById(R.id.dh_frag_diag);
         TextView date =  (TextView) rootview.findViewById(R.id.dh_frag_date);
         diagnosis_details.SymptomsAdapter symptomsAdapter = new diagnosis_details.SymptomsAdapter(getContext());
+        diagnosis_details.DiagnosisAdapter diagnosisAdapter = new diagnosis_details.DiagnosisAdapter(getContext());
         ListView symptoms = (ListView) rootview.findViewById(R.id.dh_frag_symptom);
 
         symptoms.setAdapter(symptomsAdapter);
-
+        diagnosis.setAdapter(diagnosisAdapter);
         try {
             JSONObject diagnosis_info = new JSONObject(text);
-            diagnosis.setText(diagnosis_info.getString("diagnosis"));
+            for(String entry : diagnosis_info.getString("diagnosis").split(",")) {
+                diagnosis_list.add(entry);
+            }
             date.setText(diagnosis_info.getString("date"));
             for(String entry : diagnosis_info.getString("symptoms").split(",")) {
                 symptoms_list.add(entry);
@@ -183,6 +187,34 @@ public class diagnosis_details extends Fragment {
         public String getItem(int position) {
             Log.i(ACTIVITY_NAME, "in getItem()");
             return symptoms_list.get(position);
+        }
+
+        public View getView(int position, View convertView, ViewGroup parent){
+            Log.i(ACTIVITY_NAME, "in getView()");
+            LayoutInflater inflater = diagnosis_details.this.getLayoutInflater();
+            View result = inflater.inflate(R.layout.symptom_list_item, null); ;
+            TextView message = (TextView)result.findViewById(R.id.symptom_text);
+            message.setText(   getItem(position)  ); // get the string at position
+            return result;
+        }
+    }
+
+    private class DiagnosisAdapter extends ArrayAdapter<String> {
+        protected static final String ACTIVITY_NAME = "DiagnosisAdapter";
+
+        public DiagnosisAdapter(Context ctx) {
+            super(ctx, 0);
+            Log.i(ACTIVITY_NAME, "in constructor");
+        }
+
+        public int getCount(){
+            Log.i(ACTIVITY_NAME, "in onCount()");
+            return diagnosis_list.size();
+        }
+
+        public String getItem(int position) {
+            Log.i(ACTIVITY_NAME, "in getItem()");
+            return diagnosis_list.get(position);
         }
 
         public View getView(int position, View convertView, ViewGroup parent){
