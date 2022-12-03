@@ -73,8 +73,10 @@
     <string name="name_hint">Enter your name</string>
     <string name="email">Email</string>
     <string name="email_hint">Enter your email</string>
+    <string name="age">Age</string>
+    <string name="age_hint">Enter your Age</string>
     <string name="birth">Birth Year</string>
-    <string name="birth_hint">Enter your Birth Year</string>
+    <string name="birth_hint">Enter your Year of Birth</string>
     <string name="gender">Gender</string>
     <string name="gender_male">Male</string>
     <string name="gender_female">Female</string>

@@ -6,21 +6,14 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.List;
 
@@ -28,84 +21,31 @@ import java.util.List;
 public class EditProfiles extends AppCompatActivity {
 
     protected static final String ACTIVITY_NAME = "EditProfiles"; //debugging message]
-    private static final int REQUEST_IMAGE_CAPTURE = 1;
-    Bitmap newBitmap;
-    ImageButton btnImg;
+    private ItemsDataSource datasource;
+    private ArrayAdapter<User> mAdapter;
+    User newitem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profiles);
-        Log.i(ACTIVITY_NAME, "In onResume()");
-        loadUserData();
+        Log.i(ACTIVITY_NAME, "In onCreate()");
+        ListView mListView = findViewById(R.id.list);
 
-        btnImg = findViewById(R.id.profile_img);
+        // 1. call to create database
+        datasource = new ItemsDataSource(this);
 
-        btnImg.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View arg0) {
-                Intent capture = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivityForResult(capture, REQUEST_IMAGE_CAPTURE);
-            }
-        });
-    }
+        // 2. open Database for writing
 
-    private void loadUserData() {
-        String file_name = getString(R.string.preference_name);
-        SharedPreferences myPrefs = getSharedPreferences(file_name, MODE_PRIVATE);
+        datasource.open();
 
-        if(newBitmap != null) btnImg.setImageBitmap(newBitmap);
+        //3. list all the items in table on the main screen
 
-        String  name_key = getString(R.string.key_name);
-        String new_name_value = myPrefs.getString(name_key, " ");
-        ((TextView) findViewById(R.id.text_name)).setText(new_name_value);
+        List<User> values = datasource.getAllItem();
 
-        String  birth_key = getString(R.string.key_birth);
-        String new_birth_value = myPrefs.getString(birth_key, " ");
-        ((TextView) findViewById(R.id.text_birth)).setText(new_birth_value);
-
-        String gender_key = getString(R.string.key_gender);
-        int mIntValue = myPrefs.getInt(gender_key, -1);
-
-
-        if (mIntValue >= 0) {
-            // Find the radio button that should be checked.
-            if(findViewById(R.id.radioGender) != null){
-                RadioButton radioBtn = (RadioButton) ((RadioGroup)
-                        findViewById(R.id.radioGender))
-                        .getChildAt(mIntValue);
-                // Check the button.
-                radioBtn.setChecked(true);
-            }
-            if(mIntValue == 0) ((TextView) findViewById(R.id.text_gender)).setText(R.string.gender_female);
-            else if(mIntValue == 1) ((TextView) findViewById(R.id.text_gender)).setText(R.string.gender_male);
-            else ((TextView) findViewById(R.id.text_gender)).setText(R.string.gender_unknown);
-
-        }
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQUEST_IMAGE_CAPTURE &&
-                resultCode == RESULT_OK) {
-            Bundle extras = data.getExtras();
-            Bitmap imageBitmap = (Bitmap) extras.get("data");
-            btnImg = findViewById(R.id.profile_img);
-
-            int width = Math.round((float) 1 * imageBitmap.getWidth());
-            int height = Math.round((float) 1 * imageBitmap.getHeight());
-            newBitmap = Bitmap.createScaledBitmap(imageBitmap, width,
-                    height, true);
-
-            btnImg.setImageBitmap(newBitmap);
-        }
-    }
-
-    public void onChangeInfoClicked(View v) {
-        Intent intent = new Intent(EditProfiles.this,
-                SharedPreferencesActivity.class);
-        startActivity(intent);
+        mAdapter = new ArrayAdapter <>(this,
+                android.R.layout.simple_list_item_1, values);
+        mListView.setAdapter(mAdapter);
     }
 
     public void onExitClicked(View v) {
@@ -130,10 +70,71 @@ public class EditProfiles extends AppCompatActivity {
         dialog.show();
     }
 
+    public void onClick(View view) {
+        try {
+            User item;
+            switch (view.getId()) {
+                case R.id.add:
+                    Intent intent = new Intent(EditProfiles.this,
+                            adduser_activity.class);
+                    startActivityForResult(intent, 1);
+                    break;
+                case R.id.delete:
+                    if (mAdapter.getCount() > 0) {
+                        item = mAdapter.getItem(0);
+                        datasource.deleteItem(item);
+                        mAdapter.remove(item);
+                    }
+                    break;
+                case R.id.delete_last:
+                    if (mAdapter.getCount() > 0) {
+                        item = mAdapter.getItem(mAdapter.getCount() - 1);
+                        datasource.deleteItem(item);
+                        mAdapter.remove(item);
+                    }
+                    break;
+                case R.id.exitButton:
+                    finish();
+                    break;
+            }
+            mAdapter.notifyDataSetChanged();
+        } catch (Exception e) {
+        }
+    }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1) {
+            if(resultCode == RESULT_OK) {
+                datasource.open();
+                String setUser = data.getStringExtra("setUser");
+                int setBirth = data.getIntExtra("setBirth", 0);
+                int setGender = data.getIntExtra("setGender", -1);
+                User newitem2 = new User();
+                if(setUser == null || setUser == "" ) newitem2.setUser("Guest");
+                else newitem2.setUser(setUser);
+                if(setBirth < 1000) newitem2.setBirth(2000);
+                else newitem2.setBirth(setBirth);
+                newitem2.setGender(setGender);
+                // Save the new comment to the database
+                User item = datasource.createItem(newitem2);
+                mAdapter.add(item);
+                mAdapter.notifyDataSetChanged();
+            }
+        }
+    }
+
     @Override
     protected void onResume() {
         super.onResume();
+        datasource.open();
         Log.i(ACTIVITY_NAME, "In onResume()");
-        loadUserData();
+    }
+
+    @Override
+    protected void onPause() {
+        datasource.close();
+        super.onPause();
+        Log.i(ACTIVITY_NAME, "In onPause()");
     }
 }
