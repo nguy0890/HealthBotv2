@@ -386,8 +386,8 @@ public class ChatActivity extends AppCompatActivity {
         @Override
         protected String doInBackground(String... urlString) {
             //declare variables for api call
-            String api_key = "m2WAg_MYLAURIER_CA_AUT";
-            String secret_key = "t3AGw8p9XJo26Lbx7";
+            String api_key = "Qe5n3_MYLAURIER_CA_AUT";
+            String secret_key = "i8ESg65Fcs4CPp3y9";
             SecretKeySpec key = new SecretKeySpec( secret_key.getBytes(),"HmacMD5");
             String hash = "";
 
