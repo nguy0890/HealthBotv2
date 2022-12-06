@@ -31,7 +31,6 @@ public class EditProfiles extends AppCompatActivity {
     protected static final String ACTIVITY_NAME = "EditProfiles"; //debugging message]
     protected ArrayList<User> profiles = new ArrayList<User>();
     private ItemsDataSource datasource;
-    private ArrayAdapter<User> mAdapter;
     protected ProfilesAdapter profileAdapter;
     protected TextView current_user;
     protected SharedPreferences current_user_sp;
@@ -75,8 +74,15 @@ public class EditProfiles extends AppCompatActivity {
             newitem.setGender(-1);
             // Save the new comment to the database
             User item = datasource.createItem(newitem);
-            mAdapter.add(item);
-            mAdapter.notifyDataSetChanged();
+            profiles.add(item);
+            profileAdapter.notifyDataSetChanged();
+
+            sp_editor.putString("user_index", "0");
+            sp_editor.putString("user_id", Long.toString(item.getId()));
+            sp_editor.putString("user_name", item.getUser());
+            sp_editor.commit();
+
+            current_user.setText(current_user_sp.getString("user_name", ""));
         }
 
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
