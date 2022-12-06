@@ -31,7 +31,6 @@ import java.util.Map;
 
 public class HistoryActivity extends AppCompatActivity {
     protected static final String ACTIVITY_NAME = "HistoryActivity";
-    protected static final String sp_name = "history_sp"; // temporary
     protected ArrayList<String> diagnosis_title = new ArrayList<String>();
     protected ArrayList<String> diagnosis_info = new ArrayList<String>();
 
@@ -51,7 +50,9 @@ public class HistoryActivity extends AppCompatActivity {
         history_listView.setAdapter(diagnosisAdapter);
 
         //initialize sharedpreferences
-        SharedPreferences dh_sp = getSharedPreferences(sp_name, MODE_PRIVATE);
+        SharedPreferences current_user = getSharedPreferences("current_user_sp", MODE_PRIVATE);
+        String current_user_sp = "sp_" + current_user.getString("user_id", "");
+        SharedPreferences dh_sp = getSharedPreferences(current_user_sp, MODE_PRIVATE);
 
         // map containing all shared preference keys
         Map<String, ?> keys = dh_sp.getAll();
@@ -75,7 +76,7 @@ public class HistoryActivity extends AppCompatActivity {
                         Log.i("this", diagnosis_info.get(i));
                         Bundle bundle = new Bundle();
                         bundle.putString("diagnosis_info", diagnosis_info.get(i));
-                        bundle.putString("sp_name", sp_name);
+                        bundle.putString("sp_name", current_user_sp);
                         bundle.putString("key", diagnosis_title.get(i));
                         FragmentTransaction fragmentTransaction = getSupportFragmentManager()
                                 .beginTransaction();

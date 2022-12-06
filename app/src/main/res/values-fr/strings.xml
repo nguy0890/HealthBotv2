@@ -74,6 +74,9 @@
     <string name="edit_info">Éditer</string>
     <string name="exit">Sortir</string>
     <string name="ok">Ok</string>
+    <string name="prof_delete_confirm">Voulez-vous supprimer ce profil ?</string>
+    <string name="delete_last_user">Impossible de supprimer le dernier utilisateur</string>
+
     <!--    SharedPreferencesActivity   -->
     <string name="name">Nom</string>
     <string name="name_hint">Entrez votre nom</string>

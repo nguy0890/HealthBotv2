@@ -195,7 +195,10 @@ public class ChatActivity extends AppCompatActivity {
             messages.add("r" + getString(R.string.Diagnosis) +" \n" + String.join("\n", diagnosis));
             messageAdapter.notifyDataSetChanged();
 
-            SharedPreferences dh_sp = getSharedPreferences("history_sp", MODE_PRIVATE);
+            SharedPreferences current_user = getSharedPreferences("current_user_sp", MODE_PRIVATE);
+            String current_user_sp = "sp_" + current_user.getString("user_id", "");
+            SharedPreferences dh_sp = getSharedPreferences(current_user_sp, MODE_PRIVATE);
+
             Date currentTime = Calendar.getInstance().getTime();
             JSONObject diagnosis_json = new JSONObject();
             String[] diagnosis_details = diagnosis.toArray(new String[0]);
