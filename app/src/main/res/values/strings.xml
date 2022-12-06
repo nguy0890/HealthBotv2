@@ -80,6 +80,9 @@
     <string name="profiles">Profiles</string>
     <string name="edit_info">Edit Info</string>
     <string name="exit">Exit</string>
+    <string name="prof_delete_confirm">Do you want delete this profile?</string>
+    <string name="delete_last_user">Cannot Delete Last User</string>
+
     <!--    SharedPreferencesActivity   -->
     <string name="name">Name</string>
     <string name="name_hint">Enter your name</string>

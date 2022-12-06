@@ -18,7 +18,9 @@ import java.util.regex.Pattern;
 
 
 public class LoginActivity extends AppCompatActivity {
-    protected static final String ACTIVITY_NAME = "LoginActivity"; //debugging message
+    protected static final String ACTIVITY_NAME = "LoginActivity"; //debugging message\
+    protected SharedPreferences current_user_sp;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +34,7 @@ public class LoginActivity extends AppCompatActivity {
         final EditText passwordField = findViewById(R.id.password);
         final TextView loginError = findViewById(R.id.loginError);
         SharedPreferences sp = getSharedPreferences("DefaultEmail",MODE_PRIVATE);
-
+        current_user_sp = getSharedPreferences("current_user_sp", MODE_PRIVATE);
         //default email
         String default_email = sp.getString("DefaultEmail", "email@domain.com");
 
