@@ -8,9 +8,9 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@android:drawable/sym_call_outgoing" />
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        app:srcCompat="@drawable/robot_icon_head" />
 
     <TextView
         android:id="@+id/message_text"
